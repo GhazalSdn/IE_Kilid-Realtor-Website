@@ -1,0 +1,345 @@
+{% load static %}
+    <?xml version="1.0" encoding="utf-8"?>
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    
+    <head>
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+            <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+            <title> کیلید|occasion</title>
+            <link rel="stylesheet" href={% static "CSS/occasionCSS.css" %} />
+            <link rel="stylesheet"
+                    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    
+<body>
+
+<div id="home">
+
+    <div id="sideBar" >
+        <div id="homeDetails" >
+            <div id="codeDiv" >
+                <div id="code" ></div>
+                <div id="time"></div>
+            </div>
+            <h1 id="header" ></h1>
+            <div id="price" >
+                <div id="totalPrice"></div>
+                <div id="perMeterPrice" ></div>
+            </div>
+            <div id="details" >
+                <div class="info"></div>
+                <div class="info"></div>
+                <div class="info"></div>
+                <div class="info"></div>
+
+            </div>
+            
+        </div>
+        <div id="estate" >
+            <div id="agency">
+                <img id="logo"></img>
+                <div id="agencyName" ></div>
+            </div>
+            <div id="ownerName" ></div>
+            <div id="ownerPhone" ></div>
+        </div>
+    </div>
+    
+    <div id="photoHolder" >
+        <div id="breadCrumb" ></div>
+        <div id="singlePicture">
+            <div class="fa fa-angle-left" id="leftArrow"></div>
+            <div class="fa fa-angle-right" id="rightArrow"></div>
+        </div>
+        <div id="pictures"></div>
+    </div>
+    
+    
+</div>
+<div id="chartContainer" style="height: 300px; width: 600px; "></div>
+<div id="mapWrapper">
+    <h2 id="mapText"> نقشه</h2>
+    <div id="map" style="position:absolute; height: 400px;width: 800px; top: 1500px; right: 450px; margin-left: auto;margin-right: auto; "></div>
+</div>
+
+<script>
+
+
+
+    String.prototype.replaceAt=function(index, replacement) {
+    return this.substr(0, index) + replacement+ this.substr(index + replacement.length);
+}
+    var imageCounter =0;
+    var cardURL = "http://hallows.ir/house"
+    var queryString = decodeURIComponent(window.location.search);
+    queryString = queryString.substring(1);
+    var queries = queryString.split("&");
+    var id =(queries[0].split("="))[1];
+    var URL = cardURL.concat("/", id);
+    var mylat;
+    var mylong;
+    var changeCounter =0;
+    var daysDiff =0;
+    var monthDiff=0;
+
+
+
+
+    
+    function createChart(data) {
+        var labels = [];
+        var values =[];
+        var differentL;
+        var differentV;
+        $.each(data.data, function () { 
+            if(id==(this.id)){
+                differentL = this.title;
+                differentV = this.price;
+            }
+            else{
+            labels.push(this.title);
+            values.push(this.price);
+            }
+            
+        })
+        var selectC = data.selected_color;
+        var otherC = data.other_color;
+	    var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+		title:{
+			text: "اطلاعات بازار مسکن",   
+            horizontalAlign: "right", 
+            fontSize: 20 ,
+            fontColor:"dimGrey",
+
+		},
+        dataPointWidth: 50,
+        axisX:{
+        	labelFontSize:10,
+            labelAngle: 0,
+            labelFormatter: function(e){
+				return  "";
+			}
+            
+        
+        },
+        axisY:{
+            labelAngle:40,
+            title: "میلیارد تومان",
+            titleFontColor: "dimGrey",
+            titleFontSize:15
+        },
+		data: [              
+		{
+			
+			type: "column",
+            indexLabel: "{label}",
+         indexLabelPlacement: "inside",  
+         indexLabelOrientation: "vertical",
+         indexLabelFontSize: 12,
+         
+
+            
+			dataPoints: [
+                
+                { label: labels[0],  y: values[0] / 10000000000 , color: otherC },
+                { label: labels[1],  y: values[1] / 10000000000 , color: otherC },
+                { label: labels[2],  y: values[2] / 10000000000  , color: otherC},
+                { label: labels[3],  y: values[3] / 10000000000  , color: otherC},
+                { label: labels[4],  y: values[4]  / 10000000000 , color: otherC},
+                { label: labels[5],  y: values[5]  / 10000000000 , color: otherC},
+                { label: labels[6],  y: values[6]  / 10000000000 , color: otherC},
+                { label: differentL,  y: differentV / 10000000000  , color: selectC}
+
+			]
+		}
+		]
+	});
+	chart.render();
+}
+
+
+
+
+
+
+    function changeImages(data, num){
+        var selected = num;
+        var imgNum =0;
+        var otherCount =0;
+        var display = num+1;
+        $(".pics").remove();
+        $(".otherPics").remove();
+        $("#pageNum").remove();
+
+
+        $("#singlePicture").append($('<img></img>').attr('class', "pics"));
+        $(".pics").eq(0).attr('src',(data.pic.images[num]));
+        $("#singlePicture").append($('<div></div>').attr('id', "pageNum"));
+        $("#pageNum").eq(0).append($('<div></div>').html(display+"/"+(data.pic.images.length)));
+        var number = data.pic.images.length;
+
+        for (i = 0; i <Math.min(4,number); i++) {
+            $("#pictures").append($('<div></div>').attr('class', "otherPics"));
+            $(".otherPics").eq(otherCount).css('background-image', "url(" + data.pic.images[(num+i)%number] + ")");
+            otherCount = otherCount+1;
+            
+        }
+        
+        
+
+
+        $("#pictures").append($('<div id="dots"></div>').attr('class', "fa fa-ellipsis-v"));
+    }
+
+
+    function Unix_timestamp(t)
+    {
+        var dt = new Date(t*1000);
+        var hr = dt.getHours();
+        var m = "0" + dt.getMinutes();
+        var s = "0" + dt.getSeconds();
+        return hr;  
+    }
+
+    function timestamp(t){
+            
+            var now = new Date();
+            var nowTimeStamp = now.getTime();
+            var microSecondsDiff = Math.abs(t*1000 - nowTimeStamp );
+            // Number of milliseconds per day =
+            //   24 hrs/day * 60 minutes/hour * 60 seconds/minute * 1000 msecs/second
+            daysDiff = Math.floor(microSecondsDiff/(1000 * 60 * 60  * 24));
+            if (daysDiff > 30){
+                monthDiff = Math.floor(daysDiff/30);
+                daysDiff = daysDiff - (30*monthDiff);
+                return (monthDiff  + '  ماه و'+ daysDiff + '  روز پیش');
+            }
+            else{
+                return daysDiff + '  روز پیش';
+                }
+            
+    }
+
+
+    $.getJSON(URL, function (data) {
+        mylat = data.location.lat;
+        mylong = data.location.long;
+
+        vari=0;
+        $("#code").html('کد ملک : '+data.id );
+        $("#time").html(timestamp(data.created_at));
+        $("#header").html(data.title);
+        $("#totalPrice").append($('<div</div>').attr('class', "greyPrice"));
+        $(".greyPrice").eq(0).html('قیمت :   ');
+        $("#totalPrice").append($('<div</div>').attr('class', "blue"));
+        $(".blue").eq(0).html((data.price / 10000000000)+ 'میلیارد تومان');
+        $("#perMeterPrice").append($('<div</div>').attr('class', "greyPrice"));
+        $(".greyPrice").eq(1).html('قیمت هر متر مربع :   ');
+        $("#perMeterPrice").append($('<div</div>').attr('class', "blue"));
+        $(".blue").eq(1).html(Math.floor((data.price / 10000000)/data.area)  + 'میلیون تومان');
+        $("#details").append($('<div</div>').attr('class', "info"));
+        $(".info").eq(0).append($('<div></div>').attr('class', "fa fa-home iconss"));
+        $(".info").eq(0).append($('<div</div>').attr('class', "infoText"));
+        $(".infoText").eq(0).html( data.type);
+        $(".info").eq(1).append($('<div></div>').attr('class', "fa fa-bed iconss"));
+        $(".info").eq(1).append($('<div</div>').attr('class', "infoText"));
+        $(".infoText").eq(1).html(data.bedrooms + ' خوابه ');
+        $(".info").eq(2).append($('<div></div>').attr('class', "fa fa-square-o iconss"));
+        $(".info").eq(2).append($('<div</div>').attr('class', "infoText"));
+        $(".infoText").eq(2).html(data.area + ' متر ');
+        $(".info").eq(3).append($('<div></div>').attr('class', "fa fa-car iconss"));
+        $(".info").eq(3).append($('<div</div>').attr('class', "infoText"));
+        $(".infoText").eq(3).html('پارکینگ '+data.parkings + ' عدد ');
+        $("#logo").attr('src', data.estate.logo);
+        $("#agencyName").html(data.estate.name);
+        var phone = data.estate.phone.replaceAt(4,"xxxx")
+        $("#ownerPhone").html(phone);
+        $("#ownerPhone").click(function (event) {
+        $("#ownerPhone").html(data.estate.phone);
+        });
+        var number =0;
+        $.each(data.breadcrumb, function () { 
+            $("#breadCrumb").append($('<div></div>').attr('class', "crumbs"));
+            if(number == data.breadcrumb.length-1){
+                $(".crumbs").eq(number).html(this.name);
+            }
+            else{
+            $(".crumbs").eq(number).html(this.name+" > ");
+            }
+            number = number+1;
+        })
+        changeImages(data,0);
+        var map =L.map('map').setView([mylat,mylong],7);
+        
+        // L.tileLayer('https://developers.parsijoo.ir/web-service/v1/map/?type=tile&x={x}&y={y}&z={z}&apikey=e43fe5f5118646f9bdc75cf6525ffcf6', {
+        // maxZoom: 21,
+        // }).addTo(map);
+        L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=zThDlsMvbmdz8JkZqm2b',{
+        attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+        }).addTo(map);
+        var MyIcon = L.Icon.extend({
+        // options: {
+            
+        //     iconSize:     [40, 60],
+        //     shadowSize:   [50, 64],
+        //     iconAnchor:   [22, 94],
+        //     shadowAnchor: [4, 62],
+        //     popupAnchor:  [-3, -76]
+        // }
+        });
+
+        var kilidIcon = new MyIcon({iconUrl: 'Images/marker.png'});
+        L.icon = function (options) {
+        return new L.Icon(options);
+        };
+
+        var marker = L.marker([mylat,mylong ],{icon: kilidIcon}).addTo(map );
+
+
+
+
+
+ 
+
+    });
+    $("#leftArrow").click(function (event) {
+        $.getJSON(URL, function (data) {
+
+            imageCounter = imageCounter-1;
+            if(imageCounter == -1){
+            imageCounter = data.pic.images.length-1;
+            }
+            changeImages(data,imageCounter)
+        });
+        });
+    $("#rightArrow").click(function (event) {
+            $.getJSON(URL, function (data) {
+            imageCounter = (imageCounter+1);
+            if(imageCounter == data.pic.images.length){
+            imageCounter = 0;
+            }
+            changeImages(data,imageCounter);
+        });
+    });
+
+
+    $.getJSON("http://hallows.ir/chart", function (data) {
+            createChart(data);
+    });
+
+
+    
+
+
+</script>
+
+
+
+</body>
+
+</html> 
+

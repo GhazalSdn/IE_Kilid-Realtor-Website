@@ -1,0 +1,299 @@
+@font-face {
+	font-family: 'IRANSans-faNum';
+	font-style: normal;
+	font-weight: normal;
+	src: url('https://www.kilidstatic.com/fonts/iransans/faNum/IRANSansWeb-FaNum.eot');
+	src: url('https://www.kilidstatic.com/fonts/iransans/faNum/IRANSansWeb-FaNum.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+	url('https://www.kilidstatic.com/fonts/iransans/faNum/IRANSansWeb-FaNum.woff2') format('woff2'),
+	url('https://www.kilidstatic.com/fonts/iransans/faNum/IRANSansWeb-FaNum.woff') format('woff'), 
+	url('https://www.kilidstatic.com/fonts/iransans/faNum/IRANSansWeb-FaNum.ttf') format('truetype');
+   
+}
+body{
+
+    background-color: #fff;
+    direction: rtl;
+    margin: 0;
+    font-family: IRANSans-faNum;
+
+}
+#home{
+    width: 1180px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 24px 0 142px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+  
+}
+#sideBar{
+    flex: 1 1 0;
+    margin-left: 16px;
+    position: sticky;
+    top: 98px;
+}
+#homeDetails{
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16);
+    padding: 15px 24px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    font-size: 12px;
+    color: #373435;
+}
+#codeDiv{
+    border-bottom: 1px solid #eee;
+    padding-bottom: 12px;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+}
+
+#time{
+    color: #517cfb;
+}
+#header{
+    color: #373435;
+    font-size: 16px;
+    line-height: 25px;
+    margin-bottom: 16px;
+
+}
+#price{
+    color: #173a63;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+
+}
+
+.greyPrice{
+    color: rgba(85,85,85,.7);
+    font-weight: 500;
+}
+#details{
+    font-size: 12px;
+    color: #373435;
+}
+.info{
+    font-size: 12px;
+    color: #373435;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: row;
+
+}
+.iconss{
+  color: rgba(85,85,85,.7);
+    font-size: 16px;
+    margin-left: 5px;
+
+
+
+}
+#estate{
+    box-shadow: 0 3px 6px rgba(0,0,0,.16);
+    border-radius: 15px;
+    padding-bottom: 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+#agency{
+    display: block;
+    width: 88%;
+    height: 100%;
+    background-color: #f9f7f8;
+    border-radius: 15px 15px 0 0;
+    padding: 16px;
+    margin-bottom: 12px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+}
+#logo{
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    margin-bottom: 8px;
+    box-shadow: 0 0 6px rgba(0,0,0,.16);
+}
+/* .agencyName{
+    
+} */
+#ownerPhone{
+    position: relative;
+    width: 155px;
+    height: 36px;
+    align-self: center;
+    border: none;
+    border-radius: 10px;
+    background-color: #b30753;
+    color: #fff;
+    font-size: 14px;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16);
+    cursor: pointer;
+    padding-top: 8px;
+    justify-content: center;
+}
+#breadCrumb{
+    font-size: 15px;
+    margin-bottom: 24px;
+    color: #aaa;
+    display: flex;
+    flex-direction: row;
+}
+#photoHolder{
+    flex: 2 1 auto;
+    width: 0;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+}
+#singlePicture{
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    position: relative;
+    border-radius: 15px 15px 0 0;
+    overflow: hidden;
+    height: 423px;
+}
+#pageNum{
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    color: #fff;
+    font-size: 12px;
+    white-space: nowrap;
+    padding: 4px 8px;
+    border-radius: 20px;
+    background-color: rgba(0,0,0,.6);
+    box-shadow: 0 3px 6px rgba(0,0,0,.16);
+    z-index: 2;
+}
+#pictures{
+    border-radius: 0 0 15px 15px;
+    overflow: hidden;
+    flex-direction: row-reverse;
+    padding-top: 4px;
+    background-color: #f9f7f8;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16);
+    display: flex;
+
+}
+.otherPics{
+    width: 23%;
+    padding-top: 16.2%;
+    margin-right: 4px;
+    border-radius: 2px;
+    background-position: center;
+    background-size: cover;
+}
+.pics{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    position: relative;
+    border-radius: 15px 15px 0 0;
+    overflow: hidden;
+    height: 423px;
+    z-index: -1;
+}
+#leftArrow{
+    font-size: 45px;
+    color: #fff;
+    position: absolute;
+    right: 740px;
+    align-self: center;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    padding: 16px;
+    z-index: 2;
+}
+#rightArrow{
+    font-size: 45px;
+    color: #fff;
+    position: absolute;
+    align-self: center;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    padding: 16px;
+    z-index: 2;
+}
+
+#dots{
+    position: absolute;
+    top: 540px;
+    left: 720px;
+    width: 36px;
+    color: rgb(170, 170, 170);
+    font-size: 45px;
+
+    margin-top: auto;
+    margin-bottom: auto;
+
+}
+#mapText{
+    position: absolute;
+    top:1450px;
+    right:450px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    margin-bottom: 16px;
+    margin-right: 24px;
+}
+
+#map{
+
+    z-index: 1;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 200px;
+    border-radius: 15px;
+}
+
+
+
+#mapWrapper{
+    height: 256px;
+    width: 400px;
+    border-radius: 15px;
+    overflow: hidden;
+
+}
+
+
+
+
+#chartContainer{
+
+    position: absolute;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 24px 0 142px;
+
+}

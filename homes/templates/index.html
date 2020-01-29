@@ -1,0 +1,524 @@
+{% load static %}
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <title>سامانه خرید و فروش - رهن و اجاره مسکن | کیلید</title>
+
+        <link rel="stylesheet" href="{% static 'CSS/style.css'  %}" />
+        <link rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+
+
+
+<body>
+        <!-- Header Menu of the Page -->
+        <header id="headerMenu">
+                <div id="top-header" style="z-index: 2;">
+
+                        <!-- Logo -->
+                        <div id="logo">
+                                <img id="icon" src= {% static 'images/kilid.png'  %}
+                                        style="max-height: fit-content;max-width: fit-content;" alt="kilid icon" />
+                        </div>
+                        <div id="menu">
+                                <!-- Navigation Menu -->
+
+
+                                <div id="menuList">
+                                        <ul id="category" class="inline">
+
+                                                <li><a class="category-name" href="#">خرید</a></li>
+                                                <li><a class="category-name" href="#">رهن و اجاره</a></li>
+                                                <li><a class="category-name" href="#">جستجو روی نقشه</a></li>
+                                                <li><a class="category-name" href="#">ثبت رایگان آگهی</a></li>
+                                                <li><a class="category-name" href="#">قیمت خانه شما</a></li>
+                                                <li><a class="category-name" href="#">اطلاعات بازار مسکن</a></li>
+                                                <li><a class="category-name" href="#">آژانس های املاک</a></li>
+                                                <li><a class="category-name" href="#">سامانه مشاورین</a></li>
+
+
+
+                                        </ul>
+                                </div>
+                                <div id="active1">
+                                        <a class="active" href= "login" > ورود / &nbsp; </a>
+                                        <a class="active" href="signup"  > ثبت نام </a>
+                                </div>
+
+{#                                <script>#}
+{#                                $(".active").eq(0).click(function (event) {#}
+{#                                        window.location = 'loginSignup.html?select=' + "login";#}
+{##}
+{##}
+{#                                });#}
+{#                                $(".active").eq(1).click(function (event) {#}
+{#                                        window.location = 'loginSignup.html?select=' + "signup";#}
+{##}
+{##}
+{#                                });#}
+{##}
+{#                                </script>#}
+
+
+                        </div>
+
+                </div>
+                <!-- Search Box -->
+                <div id="header-image-menu">
+                        <img src= {% static "images/home-page-landing-background-min.jpg" %} alt="background image" />
+                        <div id="headBox">
+                                <h1 id="image-text" style="height: 40px;">کیلید، سامانه هوشمند مسکن</h1>
+                        </div>
+                        <div id="searchBox">
+                                <div id="serachButtons" style="display: flex;margin-top: 20px;">
+                                        <a href="#" id="pinkButton">خرید</a>
+                                        <a href="#" class="otherButtons">رهن و اجاره</a>
+                                        <a href="#" class="otherButtons">قیمت خانه شما؟</a>
+                                </div>
+                                <div>
+                                        <form method="GET" id="searchTab">
+                                                <div id="bar" style="position: relative;">
+                                                        <img src={% static "Images/location.png" %}
+                                                                style="position: absolute; right: 5px; max-height: fit-content;max-width: 5%; top: 10px;"
+                                                                alt="location" />
+                                                        <select id="selectCity" name="selCity"
+                                                                style="position: absolute;right: 15px;">
+                                                                <option value="tehran">تهران</option>
+                                                                <option value="pardis">پردیس</option>
+                                                                <option value="karaj">کرج</option>
+                                                                <option value="kish">کیش</option>
+                                                                <option value="damavand">دماوند</option>
+                                                                <option value="noshahr">نوشهر</option>
+                                                        </select>
+                                                        <input id="sectionName" type="text"
+                                                                placeholder="نام محله، منطقه و یا ایستگاه مترو"
+                                                                name="section" value="" />
+                                                </div>
+                                                <button type="submit" id="searchButton">
+                                                        <i class="fa fa-search"></i>
+                                                </button>
+                                        </form>
+
+                                </div>
+
+                                <a id="circle" href="index.html#section-1">
+                                        <div id="circleDiv" class="fa fa-angle-down"></div>
+                                </a>
+
+                        </div>
+
+                </div>
+
+
+        </header>
+
+        <!-- Main content between Header and Footer -->
+        <main>
+                <!-- Section 1 of Main content -->
+                <section class="container" id="section-1">
+                        <div class="row">
+
+                                <div id="column1">
+                                        <img id="columnImage" src={% static "images/mm.png" %} style="   width: 80%;"
+                                                alt="section1 image" />
+                                </div>
+                                <div id="column2">
+                                        <div class="column-title">
+                                                <h2>بازار مسکن را ارزیابی کنید</h2>
+                                        </div>
+
+                                        <p>
+                                                در بازار مسکن، داشتن اطلاعات و داده های دقیق «طلایی ترین فرصتها» را برای
+                                                خریداران و سرمایه گذاران فراهم می کند. در کیلید این داده ها و اطلاعات
+                                                پردازش شده و نتیجه پردازش در اختیار مشترکان کیلید قرار می گیرد. با تحلیل
+                                                گذشته و رصد کردن امروز بازار مسکن، خانه آینده را بسازید.
+                                        </p>
+
+                                        <a href="#" class="button">
+                                                اطلاعات بازار مسکن
+                                        </a>
+                                </div>
+
+                        </div>
+                </section>
+
+                <!-- Section 2 of Main content -->
+                <section class="container" id="section2">
+                        <h2 id="headerSec2">مجله کیلید را بخوانید</h2>
+                        <p id="pSec2">کارشناسان کیلید، در مجله "کیلید" شما را با مهم ترین مسائل بازار مسکن آشنا می کنند.
+                                این مجله، مبتنی بر بررسی های علمی و آماری، اخبار و تحلیل های آینده بازار مسکن را در
+                                اختیارتان قرار می دهد.</p>
+                        <div id="columns_section2">
+                                <div class="cols">
+                                        <a class="cards">
+                                                <div class="imgs">
+                                                        <img class="changingImg" src={% static "images/cover-300x169.jpg" %}
+                                                                style="width: 100%;height: 100%; "
+                                                                alt="راهنمای خرید خانه 500میلیونی در تهران" />
+
+                                                </div>
+                                                <div class="titles">
+                                                        <span class="titleContent">راهنمای خرید خانه 500میلیونی در
+                                                                تهران</span>
+                                                </div>
+                                        </a>
+                                </div>
+                                <div class="cols">
+                                        <a class="cards">
+                                                <div class="imgs">
+                                                        <img class="changingImg" src="images/1-cover-300x169.jpg"
+                                                                style="width: 100%;height: 100%; "
+                                                                alt="نکاتی برای خانواده‌ها به مناسبت شروع مدارس دانش آموزان کلاس اولی" />
+
+                                                </div>
+                                                <div class="titles">
+                                                        <span class="titleContent">نکاتی برای خانواده‌ها به مناسبت شروع
+                                                                مدارس دانش آموزان کلاس اولی</span>
+
+                                                </div>
+                                        </a>
+                                </div>
+                                <div class="cols">
+                                        <a class="cards">
+                                                <div class="imgs">
+                                                        <img class="changingImg" src="images/1-300x169.jpg"
+                                                                style="width: 100%;height: 100%; "
+                                                                alt="دلایل عجیب و حتی ترسناک برای اثاث کشی!" />
+
+                                                </div>
+                                                <div class="titles">
+                                                        <span class="titleContent">دلایل عجیب و حتی ترسناک برای اثاث
+                                                                کشی!</span>
+                                                </div>
+                                        </a>
+                                </div>
+                        </div>
+                        <a class="button">مطالب بیشتر</a>
+
+                </section>
+                <script>
+                        $.getJSON('http://hallows.ir/mags', function (data) {
+                                var i = 0;
+                                $.each(data.items, function () {
+
+                                        $(".changingImg").eq(i).attr('src', this.image);
+                                        $(".titleContent").eq(i).text(this.title);
+                                        i = i + 1;
+                                })
+                        });
+                </script>
+
+                <section class="container" id="section3">
+                        <a id="sec3Head">اکازیون های امروز کیلید</a>
+                        <script>
+
+                function timestamp(t){
+                        
+                        var now = new Date();
+                        var nowTimeStamp = now.getTime();
+                        var microSecondsDiff = Math.abs(t*1000 - nowTimeStamp );
+                        // Number of milliseconds per day =
+                        //   24 hrs/day * 60 minutes/hour * 60 seconds/minute * 1000 msecs/second
+                        daysDiff = Math.floor(microSecondsDiff/(1000 * 60 * 60  * 24));
+                        if (daysDiff > 30){
+                                monthDiff = Math.floor(daysDiff/30);
+                                daysDiff = daysDiff - (30*monthDiff);
+                                return (monthDiff  + '  ماه و'+ daysDiff + '  روز پیش');
+                        }
+                        else{
+                                return daysDiff + '  روز پیش';
+                                }
+                        
+                }
+
+
+                                var i = 0;
+                                var j = 0;
+                                var k = 0;
+                        
+
+
+                                function process(data) {
+                                        $.each(data.items, function () {
+                                                var id = this.id;
+                                                $("#sec3Grid").append($('<div></div>').attr('class', "sec3Cards"));
+                                                $(".sec3Cards").eq(i).append($('<div></div>').attr('class', "sec3Imgs"));
+                                                var imageUrl = this.pic.image;
+                                                $(".sec3Imgs").eq(i).css('background-image', "url(" + this.pic.image + ")");
+                                                $(".sec3Imgs").eq(i).append($('<div></div>').attr('class', "sec3ImgsInfo"));
+                                                $(".sec3ImgsInfo").eq(i).append($('<div></div>').html(this.title));
+                                                $(".sec3Imgs").eq(i).append($('<div></div>').attr('class', "sec3ImgsInfo2"));
+                                                $(".sec3ImgsInfo2").eq(i).append($('<div></div>').html(this.location.locality));
+                                                $(".sec3Imgs").eq(i).append($('<div></div>').attr('class', "sec3ImgNum"));
+                                                $(".sec3ImgNum").eq(i).append($('<div></div>').html(this.pic.number));
+                                                $(".sec3Imgs").eq(i).append($('<div></div>').attr('class', "fa fa-camera camera"));
+                                                if(this.bookmarked == "true"){
+                                                        $(".sec3Imgs").eq(i).append($('<div></div>').attr('class', "fa fa-bookmark sec3Bookmark"));
+                                                }
+                                                else{
+                                                        $(".sec3Imgs").eq(i).append($('<div></div>').attr('class', "fa fa-bookmark-o sec3Bookmark")); 
+       
+                                                }
+                                                if(this.star== true){
+                                                        $(".sec3Imgs").eq(i).append($('<div></div>').attr('class', "fa fa-star sec3Star"));
+                                                }
+                                                // else{
+                                                //         $(".sec3Imgs").eq(i).append($('<div></div>').attr('class', "fa fa-star-o sec3Star"));  
+                                                        
+                                                // }
+
+                                                $(".sec3Cards").eq(i).append($('<div></div>').attr('class', "sec3Info"));
+                                                $(".sec3Info").eq(i).append($('<div></div>').attr('class', "sec3details"));
+                                                // $(".sec3details").eq(i).append($('<div></div>').attr('class', "details"));
+                                                // $(".details").eq(j).append($('<div></div>').html((this.created_at/3600)+'ساعت پیش'));
+                                                // j=j+1;
+
+                                                $(".sec3details").eq(i).append($('<div></div>').attr('class', "bluedetails"));
+                                                $(".bluedetails").eq(i).append($('<div></div>').html(timestamp(this.created_at)));
+
+
+
+                                                $(".sec3details").eq(i).append($('<div></div>').attr('class', "details"));
+                                                $(".details").eq(j).append($('<div></div>').html(this.bedrooms + 'خوابه '));
+                                                j = j + 1;
+                                                $(".sec3details").eq(i).append($('<div></div>').attr('class', "details"));
+                                                $(".details").eq(j).append($('<div></div>').html(this.area + 'متر '));
+                                                j = j + 1;
+                                                $(".sec3details").eq(i).append($('<div></div>').attr('class', "details"));
+                                                $(".details").eq(j).append($('<div></div>').html(this.type));
+                                                j = j + 1;
+                                                $(".sec3Info").eq(i).append($('<div></div>').attr('class', "sec3Price"));
+                                                $(".sec3Price").eq(i).append($('<div></div>').attr('class', 'priceText'));
+                                                $(".priceText").eq(i).append($('<div></div>').attr('class', "details2"));
+                                                $(".details2").eq(k).append($('<div>قیمت:   </div>').attr('class', "details2small"));
+                                                $(".details2").eq(k).append($('<div></div>').html(( this.price / 10000000000) + 'میلیارد تومان'));
+                                                k = k + 1;
+                                                $(".priceText").eq(i).append($('<div></div>').attr('class', "details2"));
+                                                $(".details2").eq(k).append($('<div>متر مربع:     </div>').attr('class', "details2small"));
+                                                $(".details2").eq(k).append($('<div></div>').html((   Math.floor((this.price / 10000000)/this.area)  + 'میلیون تومان')));
+                                                k = k + 1;
+                                                $(".sec3Price").eq(i).append($('<div></div>').attr('class', "sec3LogoDiv"));
+                                                $(".sec3LogoDiv").eq(i).append($('<img></img>').attr('class', "sec3Logo"));
+                                                $(".sec3Logo").eq(i).attr('src', this.estate.logo);
+                                                $(".sec3LogoDiv").eq(i).append($('<span></span>').attr('class', "sec3LogoText"));
+                                                $(".sec3LogoText").eq(i).text(this.estate.name);
+                                                $(".sec3Cards").eq(i).click(function (event) {
+                                                        window.location = 'occasion.html?id=' + id;
+
+
+                                                });
+
+
+                                                i = i + 1;
+                                        });
+
+                                }
+                                let sec3 = $('#section3');
+                                sec3.append($('<div></div>').attr('id', "sec3Grid"));
+                                $.getJSON('http://hallows.ir/occasion', function (data) {
+                                        process(data);
+
+                                        sec3.append($('<a>' + data.action.text + '</a>').attr('id', "JSONbutton"));
+                                        $("#JSONbutton").click(function (event) {
+
+                                                var jsonURL = data.action.url;
+                                                $.getJSON(jsonURL, function (data) {
+                                                        process(data);
+                                                });
+                                                $("#JSONbutton").remove();
+                                        });
+
+                                });
+
+
+                        </script>
+
+
+
+                </section>
+
+
+        </main>
+
+
+        <!-- Footer Menu -->
+        <footer>
+
+                <div id="footer">
+                        <!-- contact Section -->
+                        <div id="contact">
+
+
+                                <ul class="social-medias">
+                                        <li>
+                                                <a href="#" class="items">
+                                                        <!-- <span>Telegram</span>  -->
+                                                        <i class="fa fa-paper-plane icons" style="font-size: 30px;"></i>
+                                                </a>
+                                        </li>
+                                        <li>
+                                                <a href="#" class="items">
+                                                        <!-- <span>Instagram</span>  -->
+                                                        <i class="fa fa-instagram icons" style="font-size: 30px;"></i>
+                                                </a>
+                                        </li>
+                                        <li>
+                                                <a href="#" class="items">
+                                                        <!-- <span>Twitter</span>  -->
+                                                        <i class="ffa fa-twitter icons" style="font-size: 30px;"></i>
+                                                </a>
+                                        </li>
+                                        <li>
+                                                <a href="#" class="items">
+                                                        <i class="fa fa-linkedin icons" style="font-size: 30px;"></i>
+                                                        <!-- <span>Linkedin</span>  -->
+                                                </a>
+                                        </li>
+
+
+
+
+                                </ul>
+                        </div>
+
+                        <ul id="footerList">
+                                <li class="footerListItems">
+                                        <a class="footerListContent">خرید</a>
+                                </li>
+                                <li class="footerListItems">
+                                        <a class="footerListContent">رهن و اجاره</a>
+                                </li>
+                                <li class="footerListItems">
+                                        <a class="footerListContent">جستجو روی نقشه</a>
+                                </li>
+                                <li class="footerListItems">
+                                        <a class="footerListContent">قیمت خانه شما</a>
+                                </li>
+                                <li class="footerListItems">
+                                        <a class="footerListContent">اطلاعات بازار مسکن</a>
+                                </li>
+                                <li class="footerListItems">
+                                        <a class="footerListContent">ثبت رایگان آگهی</a>
+                                </li>
+                                <li class="footerListItems">
+                                        <a class="footerListContent">آژانس های املاک</a>
+                                </li>
+                                <li class="footerListItems">
+                                        <a class="footerListContent">سامانه مشاورین</a>
+                                </li>
+
+
+
+
+
+
+
+
+                        </ul>
+                        <div id="footerImages">
+                                <div class="footImgs">
+                                        <img src="Images/logo.png" class="fimg" alt="footer image" />
+                                </div>
+                                <div class="footImgs">
+                                        <img src="Images/eanjoman.jpg" class="fimg" alt="footer image" />
+                                </div>
+                                <div class="footImgs">
+                                        <img src="Images/eanjoman.jpg" class="fimg" alt="footer image" />
+                                </div>
+                                <div class="footImgs">
+                                        <img src="Images/ecunion-logo.png" class="fimg" alt="footer image" />
+                                </div>
+
+
+
+
+
+                        </div>
+                        <ul id="footerList2">
+                                <li class="footerListItems2">
+                                        <a class="footerListContent2">درباره کیلید</a>
+                                </li>
+                                <li class="footerListItems2">
+                                        <a class="footerListContent2">تماس با ما</a>
+                                </li>
+                                <li class="footerListItems2">
+                                        <a class="footerListContent2">بلاگ</a>
+                                </li>
+                                <li class="footerListItems2">
+                                        <a class="footerListContent2">اپلیکیشن موبایل</a>
+                                </li>
+                                <li class="footerListItems2">
+                                        <a class="footerListContent2">نقشه سایت</a>
+                                </li>
+
+
+                        </ul>
+                        <div id="footerLogo">
+                                <img id="icon2" src="images/kilid2.png" alt="kilid icon" />
+                        </div>
+                        <div id="address">
+                                <p id="addr">تهران، خیابان وزرا، کوچه نهم، پلاک 26</p>
+                                <a id="tel" href="tel:+982175071000">021-75071000</a>
+                        </div>
+                        <div id="footerColumn">
+                                <div id="rightColFooter">
+                                        <span class="footerTitles">خرید</span>
+                                        <div class="footerColumns">
+                                                <a class="sections">تهرانپارس</a>
+                                                <a class="sections">پونک</a>
+                                                <a class="sections">بلوار فردوس</a>
+                                                <a class="sections">سعادت آباد</a>
+                                                <a class="sections">نواب</a>
+
+                                        </div>
+                                        <div class="footerColumns">
+                                                <a class="sections">پاسداران</a>
+                                                <a class="sections">شهرک غرب</a>
+                                                <a class="sections">ستارخان</a>
+                                                <a class="sections">ونک</a>
+                                                <a class="sections">مرزداران</a>
+                                        </div>
+
+
+                                </div>
+                                <div id="leftColFooter">
+                                        <span class="footerTitles">اجاره</span>
+                                        <div class="footerColumns">
+                                                <a class="sections">تهرانپارس</a>
+                                                <a class="sections">پونک</a>
+                                                <a class="sections">بلوار فردوس</a>
+                                                <a class="sections">سعادت آباد</a>
+                                                <a class="sections">نواب</a>
+
+                                        </div>
+                                        <div class="footerColumns">
+                                                <a class="sections">پاسداران</a>
+                                                <a class="sections">شهرک غرب</a>
+                                                <a class="sections">ستارخان</a>
+                                                <a class="sections">ونک</a>
+                                                <a class="sections">مرزداران</a>
+                                        </div>
+
+                                </div>
+
+                        </div>
+
+                        <div id="lastLineFooter" style="position: relative;">
+                                <p id="lastP" style="position: absolute; left: 50%;">کلیه حقوق این سایت متعلق به شرکت
+                                        کلان داده شهر فناوران می‌باشد</p>
+                                <div id="last" style="position: absolute; right: 50%;">
+                                        <a class="lastItems">حریم خصوصی</a>
+                                        <a class="lastItems">شرایط استفاده</a>
+                                </div>
+                        </div>
+
+                </div>
+
+        </footer>
+</body>
+
+</html>

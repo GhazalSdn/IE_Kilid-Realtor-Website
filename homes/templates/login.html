@@ -1,0 +1,53 @@
+{% load static %}
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+                <title>کیلید / ورود</title>
+                <link rel="stylesheet" href={% static "CSS/loginStyle.css" %} />
+        </head>
+
+        <body>
+            <div id="background">
+                <div id="loginPage">
+                    <div id="cancelButton" >
+                        <a href="/homes/index.html" style="font-size: 9px; color: white; text-decoration: none;"> <img src={% static "images/close-.png" %} style="width: 100%;height: 100%;margin-left: auto;margin-right: auto;display: block;" alt="close" /></a>
+                    </div>
+                    <div id="sidebar" style="position:relative;">
+                        <img src={% static "images/side1.png" %} style="max-width: 100%; min-width: 100%; height: 25%; position: absolute;bottom: 0;" alt="graphics" />
+                    </div>
+                    <div id="formBar">
+                        <div id="form">
+                            <form method="POST">
+                            <div id="selectionBar">
+                                <a id="login">
+                                        ورود
+                                </a>
+                                <a id="signup" href="signup">
+                                        ثبت ‌نام
+                                </a>
+                                <div id="completionForm">
+                                    <div class="input">
+                                            <input class="text" placeholder="شماره همراه یا ایمیل" type="text" name="user" value="" required />
+                                    </div>
+                                    <div class="input">
+                                            <input class="text" placeholder="رمز عبور" type="password" name="pass" value="" required />
+                                    </div>
+                                    <span class="formTxt">رمز خود را
+
+                                            <a id="link">فراموش کرده ‌اید؟</a>
+
+                                    </span>
+                                    <button id="form-submit-button" type="submit" >ارسال</button>
+                                </div>
+                            </div>
+                        </form>
+                        </div>
+                        <img src={% static "images/side2.png" %} style="max-width: 100%; min-width: 100%; height: 25%; position: absolute;bottom: 0;" alt="graphics" />
+                    </div>
+
+                </div>
+            </div>
+        </body>
+
+</html>

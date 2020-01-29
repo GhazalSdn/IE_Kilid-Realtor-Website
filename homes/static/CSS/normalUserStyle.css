@@ -1,0 +1,316 @@
+
+@font-face {
+	font-family: 'IRANSans-faNum';
+	font-style: normal;
+	font-weight: normal;
+	src: url('https://www.kilidstatic.com/fonts/iransans/faNum/IRANSansWeb-FaNum.eot');
+	src: url('https://www.kilidstatic.com/fonts/iransans/faNum/IRANSansWeb-FaNum.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+	url('https://www.kilidstatic.com/fonts/iransans/faNum/IRANSansWeb-FaNum.woff2') format('woff2'),
+	url('https://www.kilidstatic.com/fonts/iransans/faNum/IRANSansWeb-FaNum.woff') format('woff'), 
+	url('https://www.kilidstatic.com/fonts/iransans/faNum/IRANSansWeb-FaNum.ttf') format('truetype');
+   
+}
+body{
+
+    background-color: #fff;
+    direction: rtl;
+    margin: 0;
+    font-family: IRANSans-faNum;
+
+}
+
+#background{
+    height: calc(100vh);
+    min-height: 500px;
+    background-color: #cccccc;
+    background-position-x: center;
+    background-position-y: center;
+    background-size: cover!important;
+    background-repeat: no-repeat;
+    background-attachment: initial;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+}
+    
+
+
+#infoPage{
+    width: 800px;
+    height: 750px;
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+#formBar{
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+    z-index: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+#form{
+    padding-top: 50px;
+    padding-right: 40px;
+    padding-bottom: 0px;
+    padding-left: 40px;
+}
+.selectionBar{
+
+    padding-top: 0px;
+    padding-right: 25px;
+    padding-bottom: 0px;
+    padding-left: 25px;
+}
+.tabs{
+    
+    background-color: inherit;
+        
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+        font-size: 17px;
+        margin-left: 0;
+    font-size: 16px;
+    color: rgba(170,170,170,.7);
+    border-right: 1px solid rgba(170,170,170,.7);
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: rgba(170, 170, 170, 0.7);
+    padding-right: 7px;
+    cursor: pointer;
+      
+}
+#selectionBar button.active {
+    background-color:white;
+    color: #b30753;
+    border-top-color: rgb(179, 7, 83);
+    border-right-color: rgb(179, 7, 83);
+    border-bottom-color: rgb(179, 7, 83);
+    border-left-color: rgb(179, 7, 83);
+    font-weight: 600;
+    font-size: 16px;
+    border-right-width: 1px;
+    border-right-style: solid;
+    padding-right: 7px;
+    margin-left: 15px;
+    cursor: pointer;
+  }
+/* #login{
+    text-decoration: none; 
+    color: #b30753;
+    border-top-color: rgb(179, 7, 83);
+    border-right-color: rgb(179, 7, 83);
+    border-bottom-color: rgb(179, 7, 83);
+    border-left-color: rgb(179, 7, 83);
+    font-weight: 600;
+    font-size: 16px;
+    border-right-width: 1px;
+    border-right-style: solid;
+    padding-right: 7px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+#signup{
+    text-decoration: none; 
+    margin-left: 0;
+    font-size: 16px;
+    color: rgba(170,170,170,.7);
+    border-right: 1px solid rgba(170,170,170,.7);
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: rgba(170, 170, 170, 0.7);
+    padding-right: 7px;
+    cursor: pointer;
+} */
+#cancelButton{
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    z-index: 1;
+    width: 33px;
+    height: 33px;
+    background-color: #707070;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+#sidebar{
+    position: relative;
+    background-color: #b30753;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    width: 160px;
+    height: 100%;
+}
+.completionForm{
+    display: none;
+    padding-top: 0px;
+    padding-right: 2px;
+    padding-bottom: 0px;
+    padding-left: 25px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    flex-direction: column;
+}
+.input{
+    margin-bottom: 7px;
+    display: flex;
+    flex-direction: column;
+}
+.text{
+    
+    height: 35px;
+    border-top-color: rgba(170, 170, 170, 0.7);
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-right-color: rgba(170, 170, 170, 0.7);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-bottom-color: rgba(170, 170, 170, 0.7);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color: rgba(170, 170, 170, 0.7);
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: #fff;
+    padding-top: 0px;
+    padding-right: 10px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+    color: rgba(28,28,28,.4);
+}
+.formTxt{
+    margin-right: 30%;
+    font-size: 11px;
+    color: rgba(28,28,28,.6);
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#link{
+
+    cursor: pointer;
+    color: #517cfb;
+    text-decoration-line: none;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+}
+.form-submit-button{
+    margin-top: 20px;
+    margin-right: 30%;
+    background-color: #b30753;
+    cursor: pointer;
+    width: 120px;
+    height: 35px;
+    border-top-color: initial;
+    border-top-style: none;
+    border-top-width: initial;
+    border-right-color: initial;
+    border-right-style: none;
+    border-right-width: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: initial;
+    border-left-color: initial;
+    border-left-style: none;
+    border-left-width: initial;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16);
+    align-self: center;
+    color: #fff;
+    font-weight: 600;
+}
+
+
+.formTxt2{
+    font-size: 11px;
+    color: rgba(28,28,28,.6);
+}
+#headerForForm{
+    font-size: 16px;
+    color: #b30753;
+    margin-bottom: 20px;
+}
+
+#link2{
+    
+    cursor: pointer;
+    color: #517cfb;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(81, 124, 251);
+    text-decoration-line: none;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+}
+#form-submit-button2{
+    margin-top: 20px;
+    margin-right: 30%;
+    background-color: #aaa;
+    cursor: default;
+    width: 120px;
+    height: 35px;
+    border-top-color: initial;
+    border-top-style: none;
+    border-top-width: initial;
+    border-right-color: initial;
+    border-right-style: none;
+    border-right-width: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: initial;
+    border-left-color: initial;
+    border-left-style: none;
+    border-left-width: initial;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16);
+    align-self: center;
+    color: #fff;
+    font-weight: 600;
+}
