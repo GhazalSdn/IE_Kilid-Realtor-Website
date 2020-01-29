@@ -59,10 +59,45 @@
     
     
 </div>
+
+
+    <div id="comments" >
+        <div id="commentHead" >نظرات</div>
+
+           {% if  username  %}
+            <form method="POST" action="addComment">
+                                {% csrf_token %}
+                            <div id="commentForm">
+
+                                <div >
+
+                                    <div id="addComment">
+                                        <label id="userComment">کاربر:{{ username }}</label>
+                                            <input id="commenttext" placeholder="نظر شما" type="textarea" name="feedback" value=""  />
+                                    </div>
+
+
+                                    <button id="form-submit-button" type="submit" >ثبت نظر</button>
+                                </div>
+
+                            </div>
+                        </form>
+            {% endif %}
+        <div id="commentBox">
+        {% for comment in comments %}
+            <div class="allcomments"> ({{ comment.time }}) : {{ comment.comment }}</div>
+        {% endfor %}
+        </div>
+
+
+
+
+    </div>
+
 <div id="chartContainer" style="height: 300px; width: 600px; "></div>
 <div id="mapWrapper">
     <h2 id="mapText"> نقشه</h2>
-    <div id="map" style="position:absolute; height: 400px;width: 800px; top: 1500px; right: 450px; margin-left: auto;margin-right: auto; "></div>
+    <div id="map" style="position:absolute; height: 400px;width: 800px; top: 1900px; right: 450px; margin-left: auto;margin-right: auto; "></div>
 </div>
 
 <script>
@@ -77,7 +112,13 @@
     var queryString = decodeURIComponent(window.location.search);
     queryString = queryString.substring(1);
     var queries = queryString.split("&");
-    var id =(queries[0].split("="))[1];
+    var id;
+    {% if id %}
+        id = {{ id }}
+    {% else %}
+        id =(queries[0].split("="))[1];
+    {% endif %}
+
     var URL = cardURL.concat("/", id);
     var mylat;
     var mylong;

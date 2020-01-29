@@ -123,4 +123,4 @@ STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL= "normalUser.html"
 
-AUTH_USER_MODEL = 'homes.kilidUser'
+# AUTH_USER_MODEL = 'homes.kilidUser'

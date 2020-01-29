@@ -21,7 +21,7 @@ body{
     width: 1180px;
     margin-right: auto;
     margin-left: auto;
-    padding: 24px 0 142px;
+    padding: 10px 0 142px;
     position: relative;
     display: flex;
     flex-direction: row;
@@ -156,6 +156,106 @@ body{
     flex-direction: column;
     margin-bottom: 24px;
 }
+#comments{
+    width: 60%;
+    margin-right: 500px;
+    background-color: #cfc3c8a4;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+    border-radius: 5px;
+}
+
+#commentHead{
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background-color: rgb(170, 170, 170);
+    color: #fff;
+    border-radius: 5px;
+    border-color: #363535;
+    font-size: 20px;
+    margin-bottom: 24px;
+
+
+}
+
+#form-submit-button{
+    margin-top: 20px;
+    margin-right: 80%;
+    margin-bottom: 20px;
+    background-color: #b30753;
+    cursor: pointer;
+    width: 120px;
+    height: 35px;
+    border-top-color: initial;
+    border-top-style: none;
+    border-top-width: initial;
+    border-right-color: initial;
+    border-right-style: none;
+    border-right-width: initial;
+    border-bottom-color: initial;
+    border-bottom-style: none;
+    border-bottom-width: initial;
+    border-left-color: initial;
+    border-left-style: none;
+    border-left-width: initial;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16);
+    align-self: center;
+    color: #fff;
+    font-weight: 600;
+}
+
+.allcomments{
+    background-color: #fff;
+    font-size: 12px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    border-color: #2c2c2c;
+    border-width: medium;
+    padding-right: 10px;
+
+}
+#commentBox{
+    display: flex;
+    flex-direction: column;
+}
+
+#userComment{
+    margin-right: 15px;
+    color: #2c2c2c;
+    font-size: 13px ;
+    font-weight: 800;
+    margin-bottom: 8px;
+
+}
+#addComment{
+    display: flex;
+    flex-direction: column;
+}
+#commenttext{
+    padding-right: 8px;
+    font-size: 16px;
+    height: 80px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 2px;
+}s
+
+
 #singlePicture{
     display: flex;
     flex-direction: row;
@@ -173,8 +273,8 @@ body{
 }
 #pageNum{
     position: absolute;
-    top: 16px;
-    right: 16px;
+    top: 86px;
+    right: 416px;
     color: #fff;
     font-size: 12px;
     white-space: nowrap;
@@ -220,7 +320,8 @@ body{
     font-size: 45px;
     color: #fff;
     position: absolute;
-    right: 740px;
+    right: 1130px;
+    top: 250px;
     align-self: center;
     cursor: pointer;
     background-color: transparent;
@@ -232,6 +333,7 @@ body{
     font-size: 45px;
     color: #fff;
     position: absolute;
+    top: 250px;
     align-self: center;
     cursor: pointer;
     background-color: transparent;
@@ -254,7 +356,7 @@ body{
 }
 #mapText{
     position: absolute;
-    top:1450px;
+    top:1850px;
     right:450px;
     font-size: 16px;
     font-weight: 600;
@@ -294,6 +396,6 @@ body{
     position: absolute;
     margin-right: auto;
     margin-left: auto;
-    padding: 24px 0 142px;
+    padding: 50px 0 142px;
 
 }

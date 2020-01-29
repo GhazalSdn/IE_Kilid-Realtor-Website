@@ -1,0 +1,97 @@
+{% load static %}
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+                <title>کیلید / ورود</title>
+                <link rel="stylesheet" href={% static "CSS/normalUserStyle.css" %} />
+                <script src="./JS/vue.js"></script>
+        </head>
+
+        <body>
+            <div id="background">
+                <div id="infoPage">
+                    <div id="cancelButton" >
+                        <a href="" style="font-size: 12px; color: white; text-decoration: none;width: 100%;margin-left: auto;margin-right: 4px; margin-top: 7px;display: block;">خانه</a>
+                    </div>
+                    <div id="sidebar" style="position:relative;">
+                        <img src={% static "images/side1.png" %} style="max-width: 100%; min-width: 100%; height: 25%; position: absolute;bottom: 0;" alt="graphics" />
+                    </div>
+                    <div id="formBar">
+                        <div id="form">
+
+                            <div class="selectionBar">
+                                <form method="POST" action="changeEmail">
+                                {% csrf_token %}
+                                <h1 id="headerForForm">ویرایش اطلاعات</h1>
+                                <div id="completionForm">
+                                    <div class="input">
+                                            <input class="text" placeholder="ایمیل برای دریافت خبرنامه" type="text" name="newEmail" value="" required />
+                                    </div>
+                                    <!-- <div class="input">
+                                            <input class="text" placeholder="رمز عبور" type="password" name="pass" value="" required />
+                                    </div>
+                                    <span class="formTxt">رمز خود را
+
+                                            <a id="link">فراموش کرده ‌اید؟</a>
+
+                                    </span>
+                                    -->
+                                    <button clas="form-submit-button" type="submit" >ذخیره</button>
+                                </div>
+                                </form>
+                            </div>
+                            <div class="selectionBar">
+                                <form method="POST" action="addHouse">
+                                {% csrf_token %}
+                                    {{ form }}
+                                <h1 id="headerForForm">اضافه کردن خانه</h1>
+                                <div id="completionForm">
+                                    <div class="input">
+                                            <input class="text" placeholder="عنوان" type="text" name="hometitle" value="" required />
+                                    </div>
+                                    <div class="input">
+                                            <input class="text" placeholder="قیمت" type="text" name="homeprice" value="" required />
+                                    </div>
+                                    <div class="input">
+                                            <input class="text" placeholder="نوع" type="text" name="hometype" value="" required />
+                                    </div>
+                                    <div class="input">
+                                            <input class="text" placeholder="متراژ" type="text" name="homearea" value="" required />
+                                    </div>
+                                    <div class="input">
+                                            <input class="text" placeholder="تعداد خواب" type="text" name="homebedrooms" value="" required />
+                                    </div>
+                                    <div class="input">
+                                            <input class="text" placeholder="تعداد پارکینگ" type="text" name="homeparkings" value="" required />
+                                    </div>
+                                    <div class="input">
+                                            <input class="text" placeholder="محله" type="text" name="homelocality" value="" required />
+                                    </div>
+
+                                    <fieldset>
+                                    <legend>اکازیون بودن؟</legend>
+                                    <input type="radio" name="homestar" value="True" /> بله <br />
+                                    <input type="radio" name="homestar" value="False" /> خیر <br />
+                                     </fieldset>                                   <div class="input">
+                                            <input type="file" placeholder="عکس" name="homepic" accept="image/*">
+                                    </div>
+
+                                    <button class="form-submit-button" type="submit" >ثبت</button>
+                                </div>
+                                </form>
+
+                            </div>
+
+                        </div>
+{#                        <img  src={% static "images/side2.png" %} style="max-width: 100%; min-width: 100%; height: 1%; position: absolute;bottom: 0;" alt="graphics" />#}
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </body>
+
+</html>

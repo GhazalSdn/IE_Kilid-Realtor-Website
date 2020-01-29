@@ -11,35 +11,29 @@
             <div id="background">
                 <div id="loginPage">
                     <div id="cancelButton" >
-                        <a href="/homes/index.html" style="font-size: 9px; color: white; text-decoration: none;"> <img src={% static "images/close-.png" %} style="width: 100%;height: 100%;margin-left: auto;margin-right: auto;display: block;" alt="close" /></a>
+                        <a href="login" style="font-size: 9px; color: white; text-decoration: none;"> <img src={% static "images/close-.png" %} style="width: 100%;height: 100%;margin-left: auto;margin-right: auto;display: block;" alt="close" /></a>
                     </div>
                     <div id="sidebar" style="position:relative;">
                         <img src={% static "images/side1.png" %} style="max-width: 100%; min-width: 100%; height: 25%; position: absolute;bottom: 0;" alt="graphics" />
                     </div>
                     <div id="formBar">
                         <div id="form">
-                            <form method="POST" action="loggingin">
+                            <form method="POST" action="forgetPass">
                                 {% csrf_token %}
                             <div id="selectionBar">
                                 <a id="login">
-                                        ورود
+                                        تغییر رمز عبور
                                 </a>
-                                <a id="signup" href="signup">
-                                        ثبت ‌نام
-                                </a>
+
                                 <div id="completionForm">
                                     <div class="input">
                                             <input class="text" placeholder="نام کاربری" type="text" name="username" value="" required />
                                     </div>
                                     <div class="input">
-                                            <input class="text" placeholder="رمز عبور" type="password" name="password" value="" required />
+                                            <input class="text" placeholder=" رمز عبور جدید" type="password" name="password" value="" required />
                                     </div>
-                                    <span class="formTxt">رمز خود را
 
-                                            <a href="forgetPassRedirect" id="link">فراموش کرده ‌اید؟</a>
-
-                                    </span>
-                                    <button id="form-submit-button" type="submit" >ارسال</button>
+                                    <button id="form-submit-button" type="submit" >تغییر</button>
                                 </div>
                             </div>
                         </form>

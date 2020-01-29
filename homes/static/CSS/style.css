@@ -144,9 +144,9 @@ header{
 .category-name{ 
     color: rgb(0, 0, 0);
     display: inline-block; 
-    padding: 0em 1.5em; 
+    padding: 0em 1.5em;
     text-decoration: none; 
-    font-size: 12px;  
+    font-size: 11px;
     line-height: 60px; 
     
 } 
@@ -712,7 +712,7 @@ header{
 
 
 #section3{
-    
+
     /* box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -724,7 +724,7 @@ header{
     display: flex;
     flex-direction: column;
 
-    
+
 }
 #sec3Head{
     text-align: center;
@@ -736,6 +736,34 @@ header{
     font-weight: 800;
 
 }
+
+
+#section4{
+
+    /* box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; */
+    margin-bottom: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+
+}
+#sec4Head{
+    text-align: center;
+    align-self: center;
+    text-decoration: none;
+    font-size: 15px;
+    color: #b30753;
+    margin-bottom: 20px;
+    font-weight: 800;
+
+}
+
 
 #JSONbutton { 
 
@@ -777,6 +805,16 @@ header{
     margin-bottom: 20px;
 
     
+}
+#sec4Grid{
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+
+
 }
 .sec3Cards{
 
@@ -962,6 +1000,202 @@ header{
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+#sec4Grid{
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+
+
+}
+.sec4Cards{
+
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    width: 275px;
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: all .3s ease;
+}
+.sec4Cards:hover {
+    box-shadow: 0 4px 12px 0 rgba(97, 98, 99, 0.77);
+
+}
+.sec4Cards *:hover {
+    box-shadow:none;
+}
+
+
+.sec4Imgs{
+    position: relative;
+    background: center center/cover no-repeat;
+    height: 154px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+}
+.sec4Bookmark {
+    position: relative;
+    top: 80px;
+    right: 240px;
+
+    z-index: +2;
+}
+.sec4Star {
+    position: relative;
+    top: -40px;
+    right: 5px;
+    color: #FFF;
+    z-index: +2;
+}
+
+
+
+.fa-bookmark-o{
+
+    position: relative;
+    top: -45px;
+    right: 230px;
+    font-size: 60px;
+    color:#FFF;
+    z-index: +2;
+}
+.sec4ImgsInfo{
+    position: relative;
+    top: 120px;
+    right: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    color:#FFF;
+    z-index: +2;
+}
+.sec4ImgsInfo2{
+    position: relative;
+    top: 80px;
+    right: 5px;
+    font-size: 10px;
+    color: #fffbfb;
+    margin-bottom: 8px;
+    z-index: +2;
+}
+.sec4ImgNum{
+    position: relative;
+    top: 80px;
+    right: 240px;
+    font-size: 10px;
+    color:#fff;
+    z-index: +2;
+
+}
+
+.sec4Info{
+    padding: 2px;
+
+}
+.sec4details{
+    padding: 2px 0;
+    border-bottom: 1px solid #e1e4e9;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+}
+.details4{
+    flex: 1;
+    padding-right: 17px;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    color: #666;
+    font-size: 11px;
+    border-left: 1px solid #e1e4e9;
+    white-space: nowrap;
+}
+
+.bluedetails4{
+    flex: 1;
+    padding-right: 5px;
+    padding-left: 5px;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    color: #517cfb;
+    font-size: 11px;
+    border-left: 1px solid #e1e4e9;
+    white-space: nowrap;
+}
+
+
+.sec4Price{
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+
+
+}
+.priceText4{
+    display: flex;
+    flex-direction: column;
+
+}
+.details42{
+    font-size: 16px;
+    color: #173a63;
+    display: flex;
+    flex-direction: row;
+}
+.details42small{
+    font-size: 11px;
+    align-items: center;
+    width: 42px;
+    margin-left: 0;
+    padding-top: 3px;
+}
+.sec4LogoDiv{
+    position: relative;
+    right: 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+}
+.sec4Logo{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.sec4LogoText{
+    font-size: 9px;
+    color: #666;
+    width: 55px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    white-space: nowrap;
+}
 
 
 

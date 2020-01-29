@@ -3,44 +3,50 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
         <head>
+                 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
                 <title>کیلید / ورود</title>
                 <link rel="stylesheet" href={% static "CSS/normalUserStyle.css" %} />
                 <script src="./JS/vue.js"></script>
         </head>
 
         <body>
+        <script> window.location.hash = '#{{jump}}'; </script>
             <div id="background">
-                <div id="infoPage">
+                <div id="infoPage" style="height: 820px;margin-top: 45px;margin-bottom: 45px">
                     <div id="cancelButton" >
-                        <a href="index.html" style="font-size: 10px; color: white; text-decoration: none;width: 100%;margin-left: auto;margin-right: 4px; margin-top: 7px;display: block;"> خروج</a>
+                        <a href="home" style="font-size: 12px; color: white; text-decoration: none;width: 100%;margin-left: auto;margin-right: 4px; margin-top: 7px;display: block;">خانه</a>
                     </div>
                     <div id="sidebar" style="position:relative;">
-                        <img src={% static "images/side1.png" %} style="max-width: 100%; min-width: 100%; height: 25%; position: absolute;bottom: 0;" alt="graphics" />
+                        <a  href="myHomes" id="headerForForm" style="color:white;padding-top: 10px;padding-right: 20px;position: relative;top: 25px;cursor: pointer;text-decoration: none;">خانه‌های من</a>
+{#                        <img src={% static "images/side1.png" %} style="max-width: 100%; min-width: 100%; height: 25%; position: absolute;bottom: 0;" alt="graphics" />#}
                     </div>
                     <div id="formBar">
                         <div id="form">
 
                             <div class="selectionBar">
-                                <form method="POST">
+                                <h1 id="headerForForm">حساب کاربری : {{ username }}</h1>
+                                <form method="POST" action="changeEmail">
                                 {% csrf_token %}
                                 <h1 id="headerForForm">ویرایش اطلاعات</h1>
                                 <div id="completionForm">
                                     <div class="input">
-                                            <input class="text" placeholder="ایمیل برای دریافت خبرنامه" type="text" name="user" value="" required />
+                                            <input class="text" placeholder="ایمیل برای دریافت خبرنامه" type="text" name="newEmail" value="" required />
                                     </div>
-                                    <!-- <div class="input">
-                                            <input class="text" placeholder="رمز عبور" type="password" name="pass" value="" required />
-                                    </div>
-                                    <span class="formTxt">رمز خود را  
 
-                                            <a id="link">فراموش کرده ‌اید؟</a>
-                                           
-                                    </span>
-                                    -->
-                                    <button clas="form-submit-button" type="submit" >ذخیره</button>
+
+                                    <button class="form-submit-button" type="submit" >ذخیره</button>
                                 </div>
                                 </form>
                             </div>
+{##}
+{#                            <script>#}
+{#                                $(".form-submit-button").eq(0).click(function (event) {#}
+{#                                    $(".input").eq(0).append($('<div></div>').attr('id', "changeMsg"));#}
+{#                                    $("#changeMsg").append($('<div></div>').html("ایمیل به روزرسانی شد"));#}
+{##}
+{##}
+{#                                        });#}
+{#                            </script>#}
                             <div class="selectionBar">
                                 <form method="POST" action="addHouse">
                                 {% csrf_token %}
@@ -86,6 +92,84 @@
                         </div>
 {#                        <img  src={% static "images/side2.png" %} style="max-width: 100%; min-width: 100%; height: 1%; position: absolute;bottom: 0;" alt="graphics" />#}
                     </div>
+
+
+                </div>
+
+
+                <div id="infoPage" style="height: 600px;margin-top: 45px;margin-bottom: 45px">
+                <div id="sec4Head" style="margin-top: 100px">خانه‌های من </div>
+                                <div id="sec4Grid">
+
+                    {% for result in results %}
+                     <div class="sec4Cards">
+                        <div class="sec4Imgs"
+                             style="background-image: url({{ result.pic }});">
+                            <div class="sec4ImgsInfo">
+                                <div>{{ result.title }}</div>
+                            </div>
+                            <div class="sec4ImgsInfo2">
+                                <div>{{ result.locality }}</div>
+                            </div>
+                        </div>
+                        <div class="sec4Info">
+                            <div class="sec4details">
+                                <div class="bluedetails4">
+                                    <div></div>
+                                </div>
+                                <div class="details4">
+                                    <div>{{ result.bedrooms }}خوابه</div>
+                                </div>
+                                <div class="details4">
+                                    <div>{{result.area}}متر </div>
+                                </div>
+                                <div class="details4">
+                                    <div>{{ result.type }}</div>
+                                </div>
+                            </div>
+                            <div class="sec4Price">
+                                <div class="priceTex4">
+                                    <div class="details42">
+                                        <div class="details42small">قیمت:</div>
+                                        <div>{{ result.price }}میلیارد تومان </div>
+                                    </div>
+
+                                </div>
+                                <div class="sec4LogoDiv">
+                                    <span class="sec4LogoText">{{ result.estate }}</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+{#                        <script>#}
+{##}
+{#                                    function timestamp(t) {#}
+{##}
+{#                                        var now = new Date();#}
+{#                                        var nowTimeStamp = now.getTime();#}
+{#                                        var microSecondsDiff = Math.abs({{ result.created_at }} * 1000 - nowTimeStamp);#}
+{#                                        // Number of milliseconds per day =#}
+{#                                        //   24 hrs/day * 60 minutes/hour * 60 seconds/minute * 1000 msecs/second#}
+{#                                        daysDiff = Math.floor(microSecondsDiff / (1000 * 60 * 60 * 24));#}
+{#                                        if (daysDiff > 30) {#}
+{#                                            monthDiff = Math.floor(daysDiff / 30);#}
+{#                                            daysDiff = daysDiff - (30 * monthDiff);#}
+{#                                            return (monthDiff + '  ماه و' + daysDiff + '  روز پیش');#}
+{#                                        } else {#}
+{#                                            return daysDiff + '  روز پیش';#}
+{#                                        }#}
+{##}
+{#                                    }#}
+{##}
+{#                                    $(".bluedetails4").eq(0).append($('<div></div>').html(timestamp({{ result.created_at }})))#}
+{##}
+{#                        </script>#}
+                    {% endfor %}
+
+
+                </div>
+
 
 
                 </div>

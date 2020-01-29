@@ -20,7 +20,7 @@ body{
 }
 
 #background{
-    height: calc(100vh);
+    /*height: calc(100vh);*/
     min-height: 500px;
     background-color: #cccccc;
     background-position-x: center;
@@ -32,15 +32,236 @@ body{
     align-items: center;
     justify-content: center;
     display: flex;
-    flex-direction: row;
-    margin: 0;
+    flex-direction: column;
+    margin:0;
 }
-    
+#sec4Head{
+    text-align: center;
+    align-self: center;
+    text-decoration: none;
+    font-size: 15px;
+    color: #b30753;
+    margin-bottom: 20px;
+    font-weight: 800;
+    border-left-color: #b30753;
+    border-left-width: thick;
+
+}
+
+/*///////MyHomes////////////////////*/
+
+
+#sec4Grid{
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+
+
+}
+.sec4Cards{
+
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    width: 275px;
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: all .3s ease;
+}
+.sec4Cards:hover {
+    box-shadow: 0 4px 12px 0 rgba(97, 98, 99, 0.77);
+
+}
+.sec4Cards *:hover {
+    box-shadow:none;
+}
+
+
+.sec4Imgs{
+    position: relative;
+    background: center center/cover no-repeat;
+    height: 154px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+}
+.sec4Bookmark {
+    position: relative;
+    top: 80px;
+    right: 240px;
+
+    z-index: +2;
+}
+.sec4Star {
+    position: relative;
+    top: -40px;
+    right: 5px;
+    color: #FFF;
+    z-index: +2;
+}
+
+
+
+.fa-bookmark-o{
+
+    position: relative;
+    top: -45px;
+    right: 230px;
+    font-size: 60px;
+    color:#FFF;
+    z-index: +2;
+}
+.sec4ImgsInfo{
+    position: relative;
+    top: 120px;
+    right: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    color:#FFF;
+    z-index: +2;
+}
+.sec4ImgsInfo2{
+    position: relative;
+    top: 80px;
+    right: 5px;
+    font-size: 10px;
+    color: #fffbfb;
+    margin-bottom: 8px;
+    z-index: +2;
+}
+.sec4ImgNum{
+    position: relative;
+    top: 80px;
+    right: 240px;
+    font-size: 10px;
+    color:#fff;
+    z-index: +2;
+
+}
+
+.sec4Info{
+    padding: 2px;
+
+}
+.sec4details{
+    padding: 2px 0;
+    border-bottom: 1px solid #e1e4e9;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+}
+.details4{
+    flex: 1;
+    padding-right: 17px;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    color: #666;
+    font-size: 11px;
+    border-left: 1px solid #e1e4e9;
+    white-space: nowrap;
+}
+
+.bluedetails4{
+    flex: 1;
+    padding-right: 5px;
+    padding-left: 5px;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    color: #517cfb;
+    font-size: 11px;
+    border-left: 1px solid #e1e4e9;
+    white-space: nowrap;
+}
+
+
+.sec4Price{
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+
+
+}
+.priceText4{
+    display: flex;
+    flex-direction: column;
+
+}
+.details42{
+    font-size: 16px;
+    color: #173a63;
+    display: flex;
+    flex-direction: row;
+}
+.details42small{
+    font-size: 11px;
+    align-items: center;
+    width: 42px;
+    margin-left: 0;
+    padding-top: 3px;
+}
+.sec4LogoDiv{
+    position: relative;
+    right: 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+}
+.sec4Logo{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.sec4LogoText{
+    font-size: 9px;
+    color: #666;
+    width: 55px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    white-space: nowrap;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*////////////////////////////////////*/
+#changeMsg{
+    color: red;
+    height: 20px;
+    width: 75%;
+    border-color: indianred;
+}
 
 
 #infoPage{
     width: 800px;
-    height: 750px;
+    height: 820px;
     position: relative;
     background-color: #fff;
     box-shadow: 0 3px 6px rgba(0,0,0,.16);
@@ -268,6 +489,7 @@ body{
     font-size: 16px;
     color: #b30753;
     margin-bottom: 20px;
+
 }
 
 #link2{
