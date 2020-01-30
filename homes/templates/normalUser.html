@@ -106,9 +106,9 @@
 
                 </div>
 
-
-                <div id="infoPage" style="height: 600px;margin-top: 45px;margin-bottom: 45px">
                 <div id="sec4Head" style="margin-top: 100px">خانه‌های من </div>
+                <div id="infoPage" style="margin-top: 45px;margin-bottom: 45px">
+
                                 <div id="sec4Grid">
 
                     {% for result in results %}
@@ -125,7 +125,7 @@
                         <div class="sec4Info">
                             <div class="sec4details">
                                 <div class="bluedetails4">
-                                    <div></div>
+                                    <div >{{ result.created_at }}</div>
                                 </div>
                                 <div class="details4">
                                     <div>{{ result.bedrooms }}خوابه</div>

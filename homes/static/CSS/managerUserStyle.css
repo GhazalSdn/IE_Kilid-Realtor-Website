@@ -6,9 +6,9 @@
 	src: url('https://www.kilidstatic.com/fonts/iransans/faNum/IRANSansWeb-FaNum.eot');
 	src: url('https://www.kilidstatic.com/fonts/iransans/faNum/IRANSansWeb-FaNum.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
 	url('https://www.kilidstatic.com/fonts/iransans/faNum/IRANSansWeb-FaNum.woff2') format('woff2'),
-	url('https://www.kilidstatic.com/fonts/iransans/faNum/IRANSansWeb-FaNum.woff') format('woff'), 
+	url('https://www.kilidstatic.com/fonts/iransans/faNum/IRANSansWeb-FaNum.woff') format('woff'),
 	url('https://www.kilidstatic.com/fonts/iransans/faNum/IRANSansWeb-FaNum.ttf') format('truetype');
-   
+
 }
 body{
 
@@ -35,7 +35,19 @@ body{
     flex-direction: column;
     margin:0;
 }
-#sec4Head{
+#sec4HeadHome{
+    text-align: center;
+    align-self: center;
+    text-decoration: none;
+    font-size: 15px;
+    color: #b30753;
+    margin-bottom: 20px;
+    font-weight: 800;
+    border-left-color: #b30753;
+    border-left-width: thick;
+
+}
+#sec4HeadUser{
     text-align: center;
     align-self: center;
     text-decoration: none;
@@ -58,15 +70,17 @@ body{
     flex-direction: row;
     flex-wrap: wrap;
     margin-bottom: 20px;
+        display: flex;
+    flex-direction: row;
+
 
 
 }
 .sec4Cards{
-
+    margin-top: 10px;
     cursor: pointer;
     margin-left: 10px;
     margin-right: 10px;
-    margin-top: 10px;
     display: flex;
     flex-direction: column;
     height: 250px;
@@ -84,6 +98,32 @@ body{
 .sec4Cards *:hover {
     box-shadow:none;
 }
+
+
+
+.sec4UserCards{
+    margin-top: 10px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: all .3s ease;
+}
+.sec4UserCards:hover {
+    box-shadow: 0 4px 12px 0 rgba(97, 98, 99, 0.77);
+
+}
+.sec4UserCards *:hover {
+    box-shadow:none;
+}
+
+
 
 
 .sec4Imgs{
@@ -190,15 +230,46 @@ body{
 .sec4Price{
     padding: 10px;
     display: flex;
+    flex-direction: column;
+
+
+}
+
+.sec4User{
+    padding: 10px;
+    display: flex;
     flex-direction: row;
 
 
 }
+
 .priceText4{
     display: flex;
     flex-direction: column;
 
 }
+
+
+.userText4{
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.useractions{
+        display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 700px;
+}
+.singleAction{
+margin-bottom: 15px;
+}
+
+
+
+
 .details42{
     font-size: 16px;
     color: #173a63;
@@ -212,6 +283,17 @@ body{
     margin-left: 0;
     padding-top: 3px;
 }
+
+
+.details42smalluser{
+    font-size: 11px;
+    align-items: center;
+
+    margin-left: 0;
+    padding-top: 3px;
+}
+
+
 .sec4LogoDiv{
     position: relative;
     right: 45px;
@@ -270,7 +352,7 @@ body{
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     display: flex;
-    flex-direction: row;
+    flex-direction: colomn;
 }
 
 #formBar{
@@ -296,9 +378,9 @@ body{
     padding-left: 25px;
 }
 .tabs{
-    
+
     background-color: inherit;
-        
+
         border: none;
         outline: none;
         cursor: pointer;
@@ -314,7 +396,7 @@ body{
     border-right-color: rgba(170, 170, 170, 0.7);
     padding-right: 7px;
     cursor: pointer;
-      
+
 }
 #selectionBar button.active {
     background-color:white;
@@ -332,7 +414,7 @@ body{
     cursor: pointer;
   }
 /* #login{
-    text-decoration: none; 
+    text-decoration: none;
     color: #b30753;
     border-top-color: rgb(179, 7, 83);
     border-right-color: rgb(179, 7, 83);
@@ -347,7 +429,7 @@ body{
     cursor: pointer;
 }
 #signup{
-    text-decoration: none; 
+    text-decoration: none;
     margin-left: 0;
     font-size: 16px;
     color: rgba(170,170,170,.7);
@@ -398,7 +480,7 @@ body{
     flex-direction: column;
 }
 .text{
-    
+
     height: 35px;
     border-top-color: rgba(170, 170, 170, 0.7);
     border-top-style: solid;
@@ -493,7 +575,7 @@ body{
 }
 
 #link2{
-    
+
     cursor: pointer;
     color: #517cfb;
     border-bottom-width: 1px;

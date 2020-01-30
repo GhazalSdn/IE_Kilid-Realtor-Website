@@ -46,7 +46,7 @@
 
             {% if username %}
                             <div id="active1"  style="width: 260px " >
-                                        <a class="active" href= "user" style="font-size: 11px"  > {{ username }}  (dashborad)   </a>
+                                        <a class="active" href= "userlevel" style="font-size: 11px"  > {{ username }}  (dashborad)   </a>
 
                                         <a class="active"  href= "logout" style="font-size: 11px" >       &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;خروج از حساب کاربری     </a>
 
@@ -162,7 +162,7 @@
                     {% for result in results %}
                      <div class="sec4Cards">
                         <div class="sec4Imgs"
-                             style="background-image: url({{ result.pic.url }});">
+                             style="background-image: url({{result.pic.image.imageurl}});">
                             <div class="sec4ImgsInfo">
                                 <div>{{ result.title }}</div>
                             </div>
@@ -173,7 +173,8 @@
                         <div class="sec4Info">
                             <div class="sec4details">
                                 <div class="bluedetails4">
-                                    <div></div>
+                                    <div id="mytimestamp">{{ result.created_at }}</div>
+{#                                    |date:'U'#}
                                 </div>
                                 <div class="details4">
                                     <div>{{ result.bedrooms }}خوابه</div>
@@ -220,7 +221,7 @@
 {##}
 {#                                    }#}
 {##}
-{#                                    $(".bluedetails4").eq(0).append($('<div></div>').html(timestamp({{ result.created_at }})))#}
+{#                                    $("#mytimestamp").eq(0).append($('<div></div>').html(timestamp("")))#}
 {##}
 {#                        </script>#}
                     {% endfor %}

@@ -26,13 +26,17 @@ class kilidUser(models.Model):
 @receiver(post_save, sender=User)
 def create_user(sender, instance, created, **kwargs):
     if created:
-        kilidUser.objects.create(user=instance)
+        kilidUser.objects.create(user=instance, isManager=False)
 
 
 # @receiver(post_save, sender=User)
 # def save_kilidUser(sender, instance, **kwargs):
 #     instance.kilidUser.save()
 
+
+class Image(models.Model):
+    image = models.ImageField()
+    # related_house = models.OneToOneField(Housing, on_delete=models.CASCADE, null=True)
 
 
 class Housing(models.Model):
@@ -44,15 +48,13 @@ class Housing(models.Model):
     parkings = models.IntegerField()
     locality = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
-    # pic = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True)
+    pic = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True)
     # pic =  models.CharField(max_length=50)
     estate = models.CharField(max_length=50)
     star = models.BooleanField()
 
 
-class Image(models.Model):
-    image = models.ImageField(upload_to='homeImgs')
-    related_house = models.OneToOneField(Housing, on_delete=models.CASCADE, null=True)
+
 
 class Comment(models.Model):
     comment = models.CharField(max_length=200)

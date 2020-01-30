@@ -4,7 +4,8 @@ from django.shortcuts import redirect
 from django.contrib.auth import login as auth_login, authenticate
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm
-from homes.models import Housing, kilidUser,Comment,Image
+from homes.models import Housing, kilidUser,Comment
+from homes.models import Image as modelImage
 from django.contrib.auth.models import User
 # from homes.forms import RegistrationForm
 from django.contrib.auth import authenticate, login
@@ -39,8 +40,22 @@ def user(request):
     if request.user.is_authenticated:
         usernameHome = request.user.username
     return render(request, 'normalUser.html',{'username': usernameHome})
+
 def manager(request):
-    return render(request, 'manager.html')
+    usernameHome = None
+    if request.user.is_authenticated:
+        usernameHome = request.user.username
+    return render(request, 'manager.html',{'username': usernameHome})
+
+
+
+def userlevel(request):
+    kilidU = kilidUser.objects.filter(user=request.user)[0]
+    if (kilidU.isManager == False):
+        return redirect('user')
+    else:
+        return redirect('manager')
+
 
 def addHousing(request):
     data = request.POST.copy()
@@ -54,15 +69,20 @@ def addHousing(request):
     pic = data.get('homepic')
     star = data.get('homestar')
     curr_time = datetime.datetime.now()
+    image = modelImage(image=pic)
+    image.save()
     estate = None
     if request.user.is_authenticated:
         estate = request.user.username
-    housing = Housing(title=title, price=price, type=type, area=area, bedrooms=bedrooms, parkings=parkings, locality=locality, created_at=curr_time, star= star, estate=estate)
+    housing = Housing(title=title, price=price, type=type, area=area, bedrooms=bedrooms, parkings=parkings, locality=locality, created_at=curr_time, star= star, estate=estate, pic=image)
     housing.save()
-    image = Image(image=pic, related_house=housing)
-    image.save()
     messages.error(request, '- خانه اضافه شد.')
-    return render(request, 'normalUser.html')
+    kilidU = kilidUser.objects.filter(user=request.user)[0]
+    if (kilidU.isManager == False):
+        return redirect('user')
+    else:
+        return redirect('manager')
+
 
 def registration_view (request):
     data = request.POST.copy()
@@ -71,8 +91,14 @@ def registration_view (request):
     surname = data.get('surname')
     email= data.get('email')
     password = data.get('password')
+    if User.objects.filter(username=username).exists():
+        messages.error(request, '- نام کاربری وارد شده تکراری است')
+        return redirect('signup')
+
     new_user = User.objects.create_user(username=username, email=email, password=password, first_name=name, last_name=surname)
     new_user.save()
+    # new_kilidUser = kilidUser(user= new_user, isManager=False)
+    # new_kilidUser.save()
     createduser = authenticate(request, username=username, password=password)
     if createduser is not None:
         auth_login(request, createduser)
@@ -88,7 +114,12 @@ def login_view(request):
     loggedinuser = authenticate(request, username=username, password=password)
     if loggedinuser is not None:
         auth_login(request, loggedinuser)
-        return redirect('user')
+        kilidU = kilidUser.objects.filter(user=loggedinuser)[0]
+        if(kilidU.isManager == False):
+            return redirect('user')
+        else:
+            return redirect('manager')
+
     else:
         messages.error(request, '- اطلاعات کاربر نادرست است.')
         return redirect('login')
@@ -118,8 +149,13 @@ def changeEmail(request):
         request.user.email = new_email
         request.user.save()
     messages.error(request, '- ایمیل به روزرسانی شد')
+    kilidU = kilidUser.objects.filter(user=request.user)[0]
+    if (kilidU.isManager == False):
+        return redirect('user')
+    else:
+        return redirect('manager')
 
-    return redirect('user')
+    # return redirect('user')
 
 
 # def userHomepage(request):
@@ -127,7 +163,7 @@ def changeEmail(request):
 #     if request.user.is_authenticated:
 #         usernameHome = request.user.username
 #     return render(request, 'userHome.html', {'username': usernameHome})
-# class housingRes:
+
 
 
 def searchResults(request):
@@ -142,8 +178,9 @@ def searchResults(request):
         usernameHome = None
         if request.user.is_authenticated:
             usernameHome = request.user.username
+
         gotodiv = "sectionSearch"
-        return render(request, 'index.html', {'results': h,'username':usernameHome,'jump':gotodiv})
+        return render(request, 'index.html', {'results': h,'username':usernameHome, 'jump':gotodiv})
 
 def showMyHomes(request):
     estate = None
@@ -191,6 +228,67 @@ def occasionPage(request):
         usernameHome = request.user.username
 
     return render(request, 'occasion.html', {'comments': h,"username": usernameHome})
+
+
+def showAllHomes(request):
+
+    h = Housing.objects.all()
+    usernameHome = None
+    if request.user.is_authenticated:
+        usernameHome = request.user.username
+    gotodiv = 'sec4HeadHome'
+    return render(request, 'manager.html', {'results': h, 'username': usernameHome, 'jump': gotodiv})
+
+
+
+
+
+
+
+def showAllUsers(request):
+   myusers = kilidUser.objects.all()
+   usernameHome = None
+   if request.user.is_authenticated:
+       usernameHome = request.user.username
+   gotodiv = 'sec4HeadHome'
+   return render(request, 'manager.html', {'myUsers': myusers, 'username': usernameHome, 'jump': gotodiv})
+
+
+
+def deleteUser(request,select):
+    # selected = request.GET['select']
+    selectU = User.objects.filter(username=select)[0]
+    selectU.delete()
+
+    kilidU = kilidUser.objects.filter(user=request.user)[0]
+    messages.error(request, '- کاربر حذف شد')
+    if (kilidU.isManager == False):
+        return redirect('user')
+    else:
+        return redirect('manager')
+
+
+def addManager(request, select):
+    selectU = User.objects.filter(username=select)[0]
+    kilidU = kilidUser.objects.filter(user=selectU)[0]
+    kilidU.isManager = True
+    kilidU.save()
+
+    kilidU = kilidUser.objects.filter(user=request.user)[0]
+    messages.error(request, '- ارتقا کاربر انتخاب شده به مدیر')
+    if (kilidU.isManager == False):
+        return redirect('user')
+    else:
+        return redirect('manager')
+
+
+
+
+
+
+
+
+
 
 
 

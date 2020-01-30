@@ -11,8 +11,9 @@ urlpatterns = [
     path('index.html', views.home),
     # path('loginSignup/index.html', views.home),
     # path('occasion.html', views.occasion),
+    path('userlevel',views.userlevel,name='userlevel'),
     path('user', views.user, name = 'user'),
-    path('manager', views.manager),
+    path('manager', views.manager, name='manager'),
     path('addHouse', views.addHousing),
     # path(, include("django.contrib.auth.urls"))
     path('register', views.registration_view),
@@ -24,10 +25,12 @@ urlpatterns = [
     # path('userHomepage', views.userHomepage),
     path('search', views.searchResults),
     path('myHomes', views.showMyHomes),
+    path('allHomes', views.showAllHomes),
+    path('allUsers', views.showAllUsers),
     path('addComment', views.addComment),
     path('occasion.html',views.occasionPage),
-
-
-
+    path(r'^deleteUser/(?P<select>[0-9]+)/$', views.deleteUser, name="deleteUser"),
+    path(r'^addManager/(?P<select>[0-9]+)/$', views.addManager, name="addManager"),
+    # path('addManager', views.addManager),
 
 ]
