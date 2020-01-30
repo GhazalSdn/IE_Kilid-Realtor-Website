@@ -37,6 +37,15 @@
                                     <button class="form-submit-button" type="submit" >ذخیره</button>
                                 </div>
                                 </form>
+                                                                {% for message in messages %}
+
+                            <div class="alert alert-success" style="color: #b30753;font-size: 14px;">
+                        <a class="close" href="#" data-dismiss="alert"></a>
+
+                        {{ message }}
+
+                    </div>
+            {% endfor %}
                             </div>
 {##}
 {#                            <script>#}
@@ -85,6 +94,7 @@
 
                                     <button class="form-submit-button" type="submit" >ثبت</button>
                                 </div>
+
                                 </form>
 
                             </div>

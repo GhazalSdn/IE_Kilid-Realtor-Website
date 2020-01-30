@@ -41,6 +41,15 @@
                                     </span>
                                     <button id="form-submit-button" type="submit" >ارسال</button>
                                 </div>
+                                {% for message in messages %}
+
+                            <div class="alert alert-success" style="color: #b30753;font-size: 14px;">
+                        <a class="close" href="#" data-dismiss="alert"></a>
+
+                        {{ message }}
+
+                    </div>
+            {% endfor %}
                             </div>
                         </form>
                         </div>

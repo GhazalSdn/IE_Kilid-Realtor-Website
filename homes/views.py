@@ -11,6 +11,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.http import JsonResponse
 from django.core import serializers
+from django.contrib import messages
 import datetime
 
 
@@ -60,6 +61,7 @@ def addHousing(request):
     housing.save()
     image = Image(image=pic, related_house=housing)
     image.save()
+    messages.error(request, '- خانه اضافه شد.')
     return render(request, 'normalUser.html')
 
 def registration_view (request):
@@ -88,6 +90,7 @@ def login_view(request):
         auth_login(request, loggedinuser)
         return redirect('user')
     else:
+        messages.error(request, '- اطلاعات کاربر نادرست است.')
         return redirect('login')
 
 def logout_view(request):
@@ -104,6 +107,7 @@ def forgetPass(request):
     u = User.objects.get(username=username)
     u.set_password(newpassword)
     u.save()
+    messages.error(request, '- گذرواژه تغییر یافت')
     return redirect('login')
 
 def changeEmail(request):
@@ -113,6 +117,7 @@ def changeEmail(request):
     if request.user.is_authenticated:
         request.user.email = new_email
         request.user.save()
+    messages.error(request, '- ایمیل به روزرسانی شد')
 
     return redirect('user')
 
@@ -122,6 +127,7 @@ def changeEmail(request):
 #     if request.user.is_authenticated:
 #         usernameHome = request.user.username
 #     return render(request, 'userHome.html', {'username': usernameHome})
+# class housingRes:
 
 
 def searchResults(request):
@@ -130,7 +136,6 @@ def searchResults(request):
         locality = request.GET.get('section')
         # print(locality)
         h = Housing.objects.filter(locality=locality)
-
         # house_serializer = serializers.serialize("json", h)
         # json = JsonResponse(house_serializer, safe=False)
         # return (json)
