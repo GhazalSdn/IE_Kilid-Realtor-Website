@@ -14,6 +14,7 @@
 
 
 <body>
+
 <script> window.location.hash = '#{{jump}}'; </script>
 <!-- Header Menu of the Page -->
 <header id="headerMenu">
@@ -469,6 +470,106 @@
 
 
     </section>
+
+
+
+
+
+
+        <section class="container" id="section4">
+        <a id="sec4HeadHome" href="getAllHome">همه خانه‌های کیلید</a>
+
+            <div id="sec5Grid" >
+
+                    {% for result in allresults %}
+                     <div class="sec5Cards">
+                        <div class="sec5Imgs"
+
+                             style="background-image: url({{ result.pic.image}});">
+                            <div class="sec5ImgsInfo">
+                                <div>{{ result.title }}</div>
+                            </div>
+                            <div class="sec5ImgsInfo2">
+                                <div>{{ result.locality }}</div>
+                            </div>
+                            {% if result.star %}
+                                <div class="fa fa-star" style="color: white;position: relative;right: 250px;top:-40px;font-size: 16px"></div>
+                            {% endif %}
+                            {% if result.bookmark %}
+                                <div class="fa fa-bookmark" style="color: white;position: relative;right: 200px;top:-40px;font-size: 16px"></div>
+                            {% endif %}
+
+                        </div>
+                        <div class="sec5Info">
+                            <div class="sec5details">
+                                <div class="bluedetails5">
+                                   <div >{{ result.created_at }}</div>
+                                </div>
+                                <div class="details5">
+                                    <div>{{ result.bedrooms }}خوابه</div>
+                                </div>
+                                <div class="details5">
+                                    <div>{{result.area}}متر </div>
+                                </div>
+                                <div class="details5">
+                                    <div>{{ result.type }}</div>
+                                </div>
+                            </div>
+                            <div class="sec5Price">
+                                <div class="priceText5">
+                                    <div class="details52">
+                                        <div class="details52small">قیمت:</div>
+                                        <div>{{ result.price }}میلیارد تومان </div>
+                                    </div>
+
+                                </div>
+                                <div class="sec5LogoDiv">
+
+                                    <a class="fa fa-eye singleAction"  href="{% url 'showSpecificHouse' select=result.id %}"  aria-hidden="true" style="font-size: 26px; margin-right: 8px;margin-left: 10px;text-decoration: none "></a>
+
+                                    <span class="sec5LogoText">{{ result.estate }}</span></div>
+                            </div>
+                        </div>
+                     </div>
+
+
+{#                        <script>#}
+{##}
+{#                                    function timestamp(t) {#}
+{##}
+{#                                        var now = new Date();#}
+{#                                        var nowTimeStamp = now.getTime();#}
+{#                                        var microSecondsDiff = Math.abs({{ result.created_at }} * 1000 - nowTimeStamp);#}
+{#                                        // Number of milliseconds per day =#}
+{#                                        //   24 hrs/day * 60 minutes/hour * 60 seconds/minute * 1000 msecs/second#}
+{#                                        daysDiff = Math.floor(microSecondsDiff / (1000 * 60 * 60 * 24));#}
+{#                                        if (daysDiff > 30) {#}
+{#                                            monthDiff = Math.floor(daysDiff / 30);#}
+{#                                            daysDiff = daysDiff - (30 * monthDiff);#}
+{#                                            return (monthDiff + '  ماه و' + daysDiff + '  روز پیش');#}
+{#                                        } else {#}
+{#                                            return daysDiff + '  روز پیش';#}
+{#                                        }#}
+{##}
+{#                                    }#}
+{##}
+{#                                    $(".bluedetails4").eq(0).append($('<div></div>').html(timestamp({{ result.created_at }})))#}
+{##}
+{#                        </script>#}
+                    {% endfor %}
+
+
+
+
+    </section>
+
+
+
+
+
+
+
+
 
 
 </main>

@@ -238,6 +238,16 @@ def showAllHomes(request):
     gotodiv = 'sec4HeadHome'
     return render(request, 'manager.html', {'results': h, 'username': usernameHome, 'jump': gotodiv})
 
+def getAll(request):
+
+    h = Housing.objects.all()
+    usernameHome = None
+    if request.user.is_authenticated:
+        usernameHome = request.user.username
+    gotodiv = 'sec4HeadHome'
+    return render(request, 'index.html', {'allresults': h, 'username': usernameHome, 'jump': gotodiv})
+
+
 
 
 
@@ -249,7 +259,7 @@ def showAllUsers(request):
    usernameHome = None
    if request.user.is_authenticated:
        usernameHome = request.user.username
-   gotodiv = 'sec4HeadHome'
+   gotodiv = 'sec4HeadUser'
    return render(request, 'manager.html', {'myUsers': myusers, 'username': usernameHome, 'jump': gotodiv})
 
 
@@ -329,7 +339,7 @@ def editHousing(request,select):
 
         return render(request, 'normalUser.html', {'houseID': selectU.id, 'username': usernameHome, 'jump': gotodiv, 'edition':True})
     else:
-        return render(request, 'manager.html', {'houseID': selectU.id, 'username': usernameHome, 'jump': gotodiv, 'edition':True})
+        return render(request, 'manager.html', {'houseID': selectU.id,'username': usernameHome, 'jump': gotodiv, 'edition':True})
 
 
 
@@ -358,6 +368,13 @@ def makeedition(request):
         return redirect('user')
     else:
         return redirect('manager')
+
+
+
+def showSpecificHouse(request, select):
+    selectU = Housing.objects.filter(id=select)[0]
+
+
 
 
 

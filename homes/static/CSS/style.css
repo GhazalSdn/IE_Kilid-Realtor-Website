@@ -1007,7 +1007,16 @@ header{
 
 
 
+#sec4HeadHome{
+    text-align: center;
+    align-self: center;
+    text-decoration: none;
+    font-size: 15px;
+    color: #b30753;
+    margin-bottom: 20px;
+    font-weight: 800;
 
+}
 
 
 
@@ -1480,4 +1489,272 @@ ul.social-medias li{
     text-decoration: none;
     cursor: pointer;
 }
+
+
+
+
+/************************************************/
+/*///////MyHomes////////////////////*/
+
+
+#sec5Grid{
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+        display: flex;
+    flex-direction: row;
+
+
+
+}
+.sec5Cards{
+    margin-top: 10px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    width: 275px;
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: all .3s ease;
+}
+.sec5Cards:hover {
+    box-shadow: 0 4px 12px 0 rgba(97, 98, 99, 0.77);
+
+}
+.sec5Cards *:hover {
+    box-shadow:none;
+}
+
+
+
+.sec5UserCards{
+    margin-top: 10px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: all .3s ease;
+}
+.sec5UserCards:hover {
+    box-shadow: 0 4px 12px 0 rgba(97, 98, 99, 0.77);
+
+}
+.sec5UserCards *:hover {
+    box-shadow:none;
+}
+
+
+
+
+.sec5Imgs{
+    position: relative;
+    background: center center/cover no-repeat;
+    height: 154px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+}
+.sec5Bookmark {
+    position: relative;
+    top: 80px;
+    right: 240px;
+
+    z-index: +2;
+}
+.sec5Star {
+    position: relative;
+    top: -40px;
+    right: 5px;
+    color: #FFF;
+    z-index: +2;
+}
+
+
+
+.fa-bookmark-o{
+
+    position: relative;
+    top: -45px;
+    right: 230px;
+    font-size: 60px;
+    color:#FFF;
+    z-index: +2;
+}
+.sec5ImgsInfo{
+    position: relative;
+    top: 75px;
+    right: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    color:#FFF;
+    z-index: +2;
+}
+.sec5ImgsInfo2{
+    position: relative;
+    top: 80px;
+    right: 5px;
+    font-size: 10px;
+    color: #fffbfb;
+    margin-bottom: 8px;
+    z-index: +2;
+}
+.sec5ImgNum{
+    position: relative;
+    top: 80px;
+    right: 240px;
+    font-size: 10px;
+    color:#fff;
+    z-index: +2;
+
+}
+
+.sec5Info{
+    padding: 2px;
+
+}
+.sec5details{
+    padding: 2px 0;
+    border-bottom: 1px solid #e1e4e9;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+}
+.details5{
+    flex: 1;
+    padding-right: 10px;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    color: #666;
+    font-size: 11px;
+    border-left: 1px solid #e1e4e9;
+    white-space: nowrap;
+}
+
+.bluedetails5{
+    flex: 1;
+    padding-right: 5px;
+    padding-left: 5px;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    color: #517cfb;
+    font-size: 11px;
+    border-left: 1px solid #e1e4e9;
+    white-space: nowrap;
+}
+
+
+.sec5Price{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.sec4User{
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+
+
+}
+
+.priceText5{
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.userText5{
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+
+
+
+
+.details52{
+    font-size: 16px;
+    color: #173a63;
+    display: flex;
+    flex-direction: row;
+}
+.details52small{
+    font-size: 11px;
+    align-items: center;
+    width: 42px;
+    margin-left: 0;
+    padding-top: 3px;
+}
+
+
+.details52smalluser{
+    font-size: 11px;
+    align-items: center;
+
+    margin-left: 0;
+    padding-top: 3px;
+}
+
+
+.sec5LogoDiv{
+    position: relative;
+    right: 75px;
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+}
+.sec5Logo{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.sec5LogoText{
+    font-size: 9px;
+    color: #666;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    white-space: nowrap;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*////////////////////////////////////*/
 

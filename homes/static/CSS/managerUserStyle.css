@@ -47,6 +47,20 @@ body{
     border-left-width: thick;
 
 }
+
+#sec4HeadEdit{
+    text-align: center;
+    align-self: center;
+    text-decoration: none;
+    font-size: 15px;
+    color: #b30753;
+    margin-bottom: 20px;
+    font-weight: 800;
+    border-left-color: #b30753;
+    border-left-width: thick;
+
+}
+
 #sec4HeadUser{
     text-align: center;
     align-self: center;

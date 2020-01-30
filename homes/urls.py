@@ -26,6 +26,7 @@ urlpatterns = [
     path('search', views.searchResults),
     path('myHomes', views.showMyHomes),
     path('allHomes', views.showAllHomes),
+    path('getAllHome', views.getAll),
     path('allUsers', views.showAllUsers),
     path('addComment', views.addComment),
     path('occasion.html',views.occasionPage),
@@ -35,6 +36,7 @@ urlpatterns = [
     path(r'^bookmarkHousing/(?P<select>[0-9]+)/$', views.bookmarkHousing, name="bookmarkHousing"),
     path(r'^editHousing/(?P<select>[0-9]+)/$', views.editHousing, name="editHousing"),
     path(r'^addManager/(?P<select>[0-9]+)/$', views.addManager, name="addManager"),
+    path(r'^showSpecificHouse/(?P<select>[0-9]+)/$', views.showSpecificHouse, name="showSpecificHouse"),
     path('makeedition', views.makeedition, name="makeedition"),
 
     # path('addManager', views.addManager),
