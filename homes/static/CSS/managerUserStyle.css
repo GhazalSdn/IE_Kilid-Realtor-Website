@@ -162,7 +162,7 @@ body{
 }
 .sec4ImgsInfo{
     position: relative;
-    top: 120px;
+    top: 75px;
     right: 5px;
     font-size: 12px;
     font-weight: 500;
@@ -296,9 +296,8 @@ margin-bottom: 15px;
 
 .sec4LogoDiv{
     position: relative;
-    right: 95px;
+    right: 40px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     align-self: center;
     justify-content: center;
@@ -312,7 +311,6 @@ margin-bottom: 15px;
 .sec4LogoText{
     font-size: 9px;
     color: #666;
-    width: 55px;
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: center;

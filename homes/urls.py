@@ -31,6 +31,9 @@ urlpatterns = [
     path('occasion.html',views.occasionPage),
     path(r'^deleteUser/(?P<select>[0-9]+)/$', views.deleteUser, name="deleteUser"),
     path(r'^deleteHousing/(?P<select>[0-9]+)/$', views.deleteHousing, name="deleteHousing"),
+    path(r'^starHousing/(?P<select>[0-9]+)/$', views.starHousing, name="starHousing"),
+    path(r'^bookmarkHousing/(?P<select>[0-9]+)/$', views.bookmarkHousing, name="bookmarkHousing"),
+    path(r'^editHousing/(?P<select>[0-9]+)/$', views.editHousing, name="editHousing"),
     path(r'^addManager/(?P<select>[0-9]+)/$', views.addManager, name="addManager"),
     # path('addManager', views.addManager),
 

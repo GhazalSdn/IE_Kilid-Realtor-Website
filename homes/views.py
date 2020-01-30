@@ -68,7 +68,7 @@ def addHousing(request):
     locality = data.get('homelocality')
     pic = data.get('homepic')
     curr_time = datetime.datetime.now()
-    image = modelImage(image=pic)
+    image = modelImage(image='/static/homeImgs/'+pic)
     image.save()
     estate = None
     if request.user.is_authenticated:
@@ -293,6 +293,42 @@ def addManager(request, select):
         return redirect('user')
     else:
         return redirect('manager')
+
+def starHousing(request,select):
+    selectU = Housing.objects.filter(id=select)[0]
+    selectU.star = True
+    selectU.save()
+    kilidU = kilidUser.objects.filter(user=request.user)[0]
+    messages.error(request, '- خانه به اکازیون اضافه شد')
+    if (kilidU.isManager == False):
+        return redirect('user')
+    else:
+        return redirect('manager')
+
+def bookmarkHousing(request, select):
+        selectU = Housing.objects.filter(id=select)[0]
+        selectU.bookmark = True
+        selectU.save()
+        kilidU = kilidUser.objects.filter(user=request.user)[0]
+        messages.error(request, '- خانه به bookmark اضافه شد')
+        if (kilidU.isManager == False):
+            return redirect('user')
+        else:
+            return redirect('manager')
+
+
+def editHousing(request,select):
+    selectU = Housing.objects.filter(id=select)[0]
+    kilidU = kilidUser.objects.filter(user=request.user)[0]
+    gotodiv = 'sec4HeadHome'
+
+    if (kilidU.isManager == False):
+
+        return render(request, 'normalUser.html', {'houseID': selectU, 'username': usernameHome, 'jump': gotodiv})
+    else:
+        return render(request, 'manager.html', {'houseID': selectU, 'username': usernameHome, 'jump': gotodiv})
+
+
 
 
 

@@ -35,8 +35,12 @@ def create_user(sender, instance, created, **kwargs):
 
 
 class Image(models.Model):
-    image = models.ImageField()
-    # related_house = models.OneToOneField(Housing, on_delete=models.CASCADE, null=True)
+    image = models.CharField(max_length=500)
+
+    # @property
+    # def get_photo_url(self):
+    #     return '/static/images/%s.jpg' % self.image
+    # # related_house = models.OneToOneField(Housing, on_delete=models.CASCADE, null=True)
 
 
 class Housing(models.Model):
@@ -52,6 +56,7 @@ class Housing(models.Model):
     # pic =  models.CharField(max_length=50)
     estate = models.CharField(max_length=50)
     star = models.BooleanField(default=False)
+    bookmark = models.BooleanField(default=False)
 
 
 

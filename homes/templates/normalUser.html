@@ -111,13 +111,19 @@
                     {% for result in results %}
                      <div class="sec4Cards">
                         <div class="sec4Imgs"
-                             style="background-image: url({{ result.pic }});">
+                             style="background-image: url({{ result.pic.image}});">
                             <div class="sec4ImgsInfo">
                                 <div>{{ result.title }}</div>
                             </div>
                             <div class="sec4ImgsInfo2">
                                 <div>{{ result.locality }}</div>
                             </div>
+                            {% if result.star %}
+                                <div class="fa fa-star" style="color: white;position: relative;right: 250px;top:-40px;font-size: 16px"></div>
+                            {% endif %}
+                            {% if result.bookmark %}
+                                <div class="fa fa-bookmark" style="color: white;position: relative;right: 250px;top:-40px;font-size: 16px"></div>
+                            {% endif %}
                         </div>
                         <div class="sec4Info">
                             <div class="sec4details">
@@ -143,7 +149,9 @@
 
                                 </div>
                                 <div class="sec4LogoDiv">
-                                     <a class="fa fa-trash singleAction"  href="{% url 'deleteHousing' select=result.id %}"  aria-hidden="true" style="font-size: 26px; "></a>
+                                    <a class="fa fa-trash singleAction"  href="{% url 'deleteHousing' select=result.id %}"  aria-hidden="true" style="font-size: 26px; "></a>
+                                    <a class="fa fa-bookmark singleAction"  href="{% url 'bookmarkHousing' select=result.id %}"  aria-hidden="true" style="font-size: 26px; margin-right: 10px;margin-left: 10px;text-decoration: none "></a>
+
                                     <span class="sec4LogoText">{{ result.estate }}</span></div>
                             </div>
                         </div>
