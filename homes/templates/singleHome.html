@@ -20,53 +20,75 @@
     <div id="sideBar">
         <div id="homeDetails">
             <div id="codeDiv">
-                <div id="code">کد ملک : 6160c</div>
-                <div id="time">2  ماه و4  روز پیش</div>
+{#                <div id="code">کد ملک : 6160c</div>#}
+                <div id="time">2{{ result.created_at }}</div>
             </div>
-            <h1 id="header">خرید آپارتمان ۱ خوابه در اکباتان</h1>
+            <h1 id="header">{{ result.title }}</h1>
             <div id="price">
-                <div id="totalPrice"><div< div="" class="greyPrice">قیمت :   </div<><div< div="" class="blue">2.2میلیارد تومان</div<></div>
-                <div id="perMeterPrice"><div< div="" class="greyPrice">قیمت هر متر مربع :   </div<><div< div="" class="blue">31میلیون تومان</div<></div>
+                <div id="totalPrice"><div class="greyPrice">قیمت :   </div><div class="blue">{{ result.price }}</div></div>
+{#                <div id="perMeterPrice"><div< div="" class="greyPrice">قیمت هر متر مربع :   </div<><div< div="" class="blue">31میلیون تومان</div<></div>#}
             </div>
             <div id="details">
-                <div class="info"><div class="fa fa-home iconss"></div><div< div="" class="infoText">مسکونی</div<></div>
-                <div class="info"><div class="fa fa-bed iconss"></div><div< div="" class="infoText">1 خوابه </div<></div>
-                <div class="info"><div class="fa fa-square-o iconss"></div><div< div="" class="infoText">70 متر </div<></div>
-                <div class="info"><div class="fa fa-car iconss"></div><div< div="" class="infoText">پارکینگ 0 عدد </div<></div>
+                <div class="info"><div class="fa fa-home iconss"></div><div class="infoText">{{ result.type }}</div></div>
+                <div class="info"><div class="fa fa-bed iconss"></div><div class="infoText">{{ result.bedrooms }}  </div></div>
+                <div class="info"><div class="fa fa-square-o iconss"></div><div class="infoText">{{ result.area }} </div></div>
+                <div class="info"><div class="fa fa-car iconss"></div><div class="infoText">{{ result.parkings }} </div></div>
 
-            <div< div="" class="info"></div<></div>
+{#            <div< div="" class="info"></div<></div>#}
 
         </div>
         <div id="estate">
             <div id="agency">
-                <img id="logo" src="https://www.kilidstatic.com/logos/548d6d32-3831-416a-a2d9-f0b2bbb63d2a.jpg">
-                <div id="agencyName">برج</div>
+{#                <img id="logo" src="https://www.kilidstatic.com/logos/548d6d32-3831-416a-a2d9-f0b2bbb63d2a.jpg">#}
+                <div id="agencyName">{{ result.estate }}</div>
             </div>
             <div id="ownerName"></div>
-            <div id="ownerPhone">0912xxxx257</div>
+{#            <div id="ownerPhone">0912xxxx257</div>#}
         </div>
+    </div>
     </div>
 
     <div id="photoHolder">
-        <div id="breadCrumb"><div class="crumbs">خرید &gt; </div><div class="crumbs">شهر تهران &gt; </div><div class="crumbs">منطقه ۲س &gt; </div><div class="crumbs">اکباتان</div></div>
-        <a id="form-submit-button" href="home" type="submit" style="text-align: center;justify-content: center;text-decoration: none">بازگشت</a>
+        <div id="breadCrumb">><div class="crumbs">شهر تهران &gt; </div><div class="crumbs">{{ result.locality }} </div></div>
+{#        <a id="form-submit-button" href="home" style="text-align: center;justify-content: center;text-decoration: none">بازگشت</a>#}
         <div id="singlePicture">
-            <div class="fa fa-angle-left" id="leftArrow"></div>
-            <div class="fa fa-angle-right" id="rightArrow"></div>
-        <img class="pics" src="https://www.kilidstatic.com/photos/large/listing_229f67b6-1880-4f71-86a6-d5531f835c5a.jpg"><div id="pageNum"><div>1/1</div></div></div>
-        <div id="pictures"><div class="otherPics" style="background-image: url(&quot;https://www.kilidstatic.com/photos/large/listing_229f67b6-1880-4f71-86a6-d5531f835c5a.jpg&quot;);"></div><div id="dots" class="fa fa-ellipsis-v"></div></div>
+{#            <div class="fa fa-angle-left" id="leftArrow"></div>#}
+{#            <div class="fa fa-angle-right" id="rightArrow"></div>#}
+        <img class="pics" src="{{ result.pic.image }}" style="border-radius: 15px"/></div>
+{#        <div id="pageNum"><div>1/1</div></div>#}
+{#        <div id="pictures"><div class="otherPics" style="background-image: url(&quot;https://www.kilidstatic.com/photos/large/listing_229f67b6-1880-4f71-86a6-d5531f835c5a.jpg&quot;);"></div><div id="dots" class="fa fa-ellipsis-v"></div></div>#}
     </div>
 
 
 </div>
 
 
-    <div id="comments">
-        <div id="commentHead">نظرات</div>
+    <div id="comments" >
+        <div id="commentHead" >نظرات</div>
+
+           {% if  username  %}
+            <form method="POST" action="addComment">
+                                {% csrf_token %}
+                            <div id="commentForm">
+
+                                <div >
+
+                                    <div id="addComment">
+                                        <label id="userComment">کاربر:{{ username }}</label>
+                                            <input id="commenttext" placeholder="نظر شما" type="textarea" name="feedback" value=""  />
+                                    </div>
 
 
+                                    <button id="form-submit-button" type="submit" >ثبت نظر</button>
+                                </div>
+
+                            </div>
+                        </form>
+            {% endif %}
         <div id="commentBox">
-
+        {% for comment in comments %}
+            <div class="allcomments"> ({{ comment.time }}) : {{ comment.comment }}</div>
+        {% endfor %}
         </div>
 
 
@@ -74,292 +96,21 @@
 
     </div>
 
-<div id="chartContainer" style="height: 300px; width: 600px; "><div class="canvasjs-chart-container" style="position: relative; text-align: left; cursor: auto;"><canvas class="canvasjs-chart-canvas" width="1200" height="984" style="width: 600px; height: 492px; position: absolute; user-select: none;"></canvas><canvas class="canvasjs-chart-canvas" width="1200" height="984" style="width: 600px; height: 492px; position: absolute; -webkit-tap-highlight-color: transparent; user-select: none;"></canvas><div class="canvasjs-chart-toolbar" style="position: absolute; right: 1px; top: 1px; border: 1px solid transparent;"></div><div class="canvasjs-chart-tooltip" style="position: absolute; height: auto; box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px 2px; z-index: 1000; pointer-events: none; display: none; border-radius: 5px;"><div style=" width: auto;height: auto;min-width: 50px;line-height: auto;margin: 0px 0px 0px 0px;padding: 5px;font-family: Calibri, Arial, Georgia, serif;font-weight: normal;font-style: italic;font-size: 14px;color: #000000;text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);text-align: left;border: 2px solid gray;background: rgba(255,255,255,.9);text-indent: 0px;white-space: nowrap;border-radius: 5px;-moz-user-select:none;-khtml-user-select: none;-webkit-user-select: none;-ms-user-select: none;user-select: none;} "> Sample Tooltip</div></div><a class="canvasjs-chart-credit" title="JavaScript Charts" style="outline:none;margin:0px;position:absolute;right:2px;top:478px;color:dimgrey;text-decoration:none;font-size:11px;font-family: Calibri, Lucida Grande, Lucida Sans Unicode, Arial, sans-serif" tabindex="-1" target="_blank" href="https://canvasjs.com/">CanvasJS.com</a></div></div>
-<div id="mapWrapper">
-    <h2 id="mapText"> نقشه</h2>
-    <div id="map" style="position:absolute; height: 400px;width: 800px; top: 1900px; right: 450px; margin-left: auto;margin-right: auto; " class="leaflet-container leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag" tabindex="0"><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(0px, 0px, 0px) scale(1);"><img alt="" role="presentation" src="https://api.maptiler.com/maps/streets/7/76/55.png?key=zThDlsMvbmdz8JkZqm2b" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(61px, 93px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://api.maptiler.com/maps/streets/7/77/55.png?key=zThDlsMvbmdz8JkZqm2b" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(317px, 93px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://api.maptiler.com/maps/streets/7/76/54.png?key=zThDlsMvbmdz8JkZqm2b" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(61px, -163px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://api.maptiler.com/maps/streets/7/77/54.png?key=zThDlsMvbmdz8JkZqm2b" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(317px, -163px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://api.maptiler.com/maps/streets/7/76/56.png?key=zThDlsMvbmdz8JkZqm2b" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(61px, 349px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://api.maptiler.com/maps/streets/7/77/56.png?key=zThDlsMvbmdz8JkZqm2b" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(317px, 349px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://api.maptiler.com/maps/streets/7/75/55.png?key=zThDlsMvbmdz8JkZqm2b" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-195px, 93px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://api.maptiler.com/maps/streets/7/78/55.png?key=zThDlsMvbmdz8JkZqm2b" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(573px, 93px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://api.maptiler.com/maps/streets/7/75/54.png?key=zThDlsMvbmdz8JkZqm2b" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-195px, -163px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://api.maptiler.com/maps/streets/7/78/54.png?key=zThDlsMvbmdz8JkZqm2b" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(573px, -163px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://api.maptiler.com/maps/streets/7/75/56.png?key=zThDlsMvbmdz8JkZqm2b" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-195px, 349px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://api.maptiler.com/maps/streets/7/78/56.png?key=zThDlsMvbmdz8JkZqm2b" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(573px, 349px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-shadow-pane"></div><div class="leaflet-pane leaflet-overlay-pane"></div><div class="leaflet-pane leaflet-marker-pane"><img src="Images/marker.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="transform: translate3d(400px, 200px, 0px); z-index: 200;"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(19795px, 14186.9px, 0px) scale(64);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in">+</a><a class="leaflet-control-zoom-out" href="#" title="Zoom out" role="button" aria-label="Zoom out">−</a></div></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | <a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a></div></div></div></div>
-</div>
 
-<script>
+{#    <div id="comments">#}
+{#        <div id="commentHead">نظرات</div>#}
+{##}
+{##}
+{#        <div id="commentBox">#}
+{##}
+{#        </div>#}
+{##}
+{##}
+{##}
+{##}
+{#    </div>#}
 
 
 
-    String.prototype.replaceAt=function(index, replacement) {
-    return this.substr(0, index) + replacement+ this.substr(index + replacement.length);
-}
-    var imageCounter =0;
-    var cardURL = "http://hallows.ir/house"
-    var queryString = decodeURIComponent(window.location.search);
-    queryString = queryString.substring(1);
-    var queries = queryString.split("&");
-    var id;
 
-        id =(queries[0].split("="))[1];
-
-
-    var URL = cardURL.concat("/", id);
-    var mylat;
-    var mylong;
-    var changeCounter =0;
-    var daysDiff =0;
-    var monthDiff=0;
-
-
-
-
-
-    function createChart(data) {
-        var labels = [];
-        var values =[];
-        var differentL;
-        var differentV;
-        $.each(data.data, function () {
-            if(id==(this.id)){
-                differentL = this.title;
-                differentV = this.price;
-            }
-            else{
-            labels.push(this.title);
-            values.push(this.price);
-            }
-
-        })
-        var selectC = data.selected_color;
-        var otherC = data.other_color;
-	    var chart = new CanvasJS.Chart("chartContainer", {
-            animationEnabled: true,
-		title:{
-			text: "اطلاعات بازار مسکن",
-            horizontalAlign: "right",
-            fontSize: 20 ,
-            fontColor:"dimGrey",
-
-		},
-        dataPointWidth: 50,
-        axisX:{
-        	labelFontSize:10,
-            labelAngle: 0,
-            labelFormatter: function(e){
-				return  "";
-			}
-
-
-        },
-        axisY:{
-            labelAngle:40,
-            title: "میلیارد تومان",
-            titleFontColor: "dimGrey",
-            titleFontSize:15
-        },
-		data: [
-		{
-
-			type: "column",
-            indexLabel: "{label}",
-         indexLabelPlacement: "inside",
-         indexLabelOrientation: "vertical",
-         indexLabelFontSize: 12,
-
-
-
-			dataPoints: [
-
-                { label: labels[0],  y: values[0] / 10000000000 , color: otherC },
-                { label: labels[1],  y: values[1] / 10000000000 , color: otherC },
-                { label: labels[2],  y: values[2] / 10000000000  , color: otherC},
-                { label: labels[3],  y: values[3] / 10000000000  , color: otherC},
-                { label: labels[4],  y: values[4]  / 10000000000 , color: otherC},
-                { label: labels[5],  y: values[5]  / 10000000000 , color: otherC},
-                { label: labels[6],  y: values[6]  / 10000000000 , color: otherC},
-                { label: differentL,  y: differentV / 10000000000  , color: selectC}
-
-			]
-		}
-		]
-	});
-	chart.render();
-}
-
-
-
-
-
-
-    function changeImages(data, num){
-        var selected = num;
-        var imgNum =0;
-        var otherCount =0;
-        var display = num+1;
-        $(".pics").remove();
-        $(".otherPics").remove();
-        $("#pageNum").remove();
-
-
-        $("#singlePicture").append($('<img></img>').attr('class', "pics"));
-        $(".pics").eq(0).attr('src',(data.pic.images[num]));
-        $("#singlePicture").append($('<div></div>').attr('id', "pageNum"));
-        $("#pageNum").eq(0).append($('<div></div>').html(display+"/"+(data.pic.images.length)));
-        var number = data.pic.images.length;
-
-        for (i = 0; i <Math.min(4,number); i++) {
-            $("#pictures").append($('<div></div>').attr('class', "otherPics"));
-            $(".otherPics").eq(otherCount).css('background-image', "url(" + data.pic.images[(num+i)%number] + ")");
-            otherCount = otherCount+1;
-
-        }
-
-
-
-
-        $("#pictures").append($('<div id="dots"></div>').attr('class', "fa fa-ellipsis-v"));
-    }
-
-
-    function Unix_timestamp(t)
-    {
-        var dt = new Date(t*1000);
-        var hr = dt.getHours();
-        var m = "0" + dt.getMinutes();
-        var s = "0" + dt.getSeconds();
-        return hr;
-    }
-
-    function timestamp(t){
-
-            var now = new Date();
-            var nowTimeStamp = now.getTime();
-            var microSecondsDiff = Math.abs(t*1000 - nowTimeStamp );
-            // Number of milliseconds per day =
-            //   24 hrs/day * 60 minutes/hour * 60 seconds/minute * 1000 msecs/second
-            daysDiff = Math.floor(microSecondsDiff/(1000 * 60 * 60  * 24));
-            if (daysDiff > 30){
-                monthDiff = Math.floor(daysDiff/30);
-                daysDiff = daysDiff - (30*monthDiff);
-                return (monthDiff  + '  ماه و'+ daysDiff + '  روز پیش');
-            }
-            else{
-                return daysDiff + '  روز پیش';
-                }
-
-    }
-
-
-    $.getJSON(URL, function (data) {
-        mylat = data.location.lat;
-        mylong = data.location.long;
-
-        vari=0;
-        $("#code").html('کد ملک : '+data.id );
-        $("#time").html(timestamp(data.created_at));
-        $("#header").html(data.title);
-        $("#totalPrice").append($('<div</div>').attr('class', "greyPrice"));
-        $(".greyPrice").eq(0).html('قیمت :   ');
-        $("#totalPrice").append($('<div</div>').attr('class', "blue"));
-        $(".blue").eq(0).html((data.price / 10000000000)+ 'میلیارد تومان');
-        $("#perMeterPrice").append($('<div</div>').attr('class', "greyPrice"));
-        $(".greyPrice").eq(1).html('قیمت هر متر مربع :   ');
-        $("#perMeterPrice").append($('<div</div>').attr('class', "blue"));
-        $(".blue").eq(1).html(Math.floor((data.price / 10000000)/data.area)  + 'میلیون تومان');
-        $("#details").append($('<div</div>').attr('class', "info"));
-        $(".info").eq(0).append($('<div></div>').attr('class', "fa fa-home iconss"));
-        $(".info").eq(0).append($('<div</div>').attr('class', "infoText"));
-        $(".infoText").eq(0).html( data.type);
-        $(".info").eq(1).append($('<div></div>').attr('class', "fa fa-bed iconss"));
-        $(".info").eq(1).append($('<div</div>').attr('class', "infoText"));
-        $(".infoText").eq(1).html(data.bedrooms + ' خوابه ');
-        $(".info").eq(2).append($('<div></div>').attr('class', "fa fa-square-o iconss"));
-        $(".info").eq(2).append($('<div</div>').attr('class', "infoText"));
-        $(".infoText").eq(2).html(data.area + ' متر ');
-        $(".info").eq(3).append($('<div></div>').attr('class', "fa fa-car iconss"));
-        $(".info").eq(3).append($('<div</div>').attr('class', "infoText"));
-        $(".infoText").eq(3).html('پارکینگ '+data.parkings + ' عدد ');
-        $("#logo").attr('src', data.estate.logo);
-        $("#agencyName").html(data.estate.name);
-        var phone = data.estate.phone.replaceAt(4,"xxxx")
-        $("#ownerPhone").html(phone);
-        $("#ownerPhone").click(function (event) {
-        $("#ownerPhone").html(data.estate.phone);
-        });
-        var number =0;
-        $.each(data.breadcrumb, function () {
-            $("#breadCrumb").append($('<div></div>').attr('class', "crumbs"));
-            if(number == data.breadcrumb.length-1){
-                $(".crumbs").eq(number).html(this.name);
-            }
-            else{
-            $(".crumbs").eq(number).html(this.name+" > ");
-            }
-            number = number+1;
-        })
-        changeImages(data,0);
-        var map =L.map('map').setView([mylat,mylong],7);
-
-        // L.tileLayer('https://developers.parsijoo.ir/web-service/v1/map/?type=tile&x={x}&y={y}&z={z}&apikey=e43fe5f5118646f9bdc75cf6525ffcf6', {
-        // maxZoom: 21,
-        // }).addTo(map);
-        L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=zThDlsMvbmdz8JkZqm2b',{
-        attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
-        }).addTo(map);
-        var MyIcon = L.Icon.extend({
-        // options: {
-
-        //     iconSize:     [40, 60],
-        //     shadowSize:   [50, 64],
-        //     iconAnchor:   [22, 94],
-        //     shadowAnchor: [4, 62],
-        //     popupAnchor:  [-3, -76]
-        // }
-        });
-
-        var kilidIcon = new MyIcon({iconUrl: 'Images/marker.png'});
-        L.icon = function (options) {
-        return new L.Icon(options);
-        };
-
-        var marker = L.marker([mylat,mylong ],{icon: kilidIcon}).addTo(map );
-
-
-
-
-
-
-
-    });
-    $("#leftArrow").click(function (event) {
-        $.getJSON(URL, function (data) {
-
-            imageCounter = imageCounter-1;
-            if(imageCounter == -1){
-            imageCounter = data.pic.images.length-1;
-            }
-            changeImages(data,imageCounter)
-        });
-        });
-    $("#rightArrow").click(function (event) {
-            $.getJSON(URL, function (data) {
-            imageCounter = (imageCounter+1);
-            if(imageCounter == data.pic.images.length){
-            imageCounter = 0;
-            }
-            changeImages(data,imageCounter);
-        });
-    });
-
-
-    $.getJSON("http://hallows.ir/chart", function (data) {
-            createChart(data);
-    });
-
-
-
-
-
-</script>
-
-
-
-
-
-
-
-<span style="position: absolute; left: 0px; top: -20000px; padding: 0px; margin: 0px; border: none; white-space: pre; line-height: normal; font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif; font-size: 12px; font-weight: normal; display: none;">Mpgyi</span></body></html>
+</body></html>

@@ -373,6 +373,11 @@ def makeedition(request):
 
 def showSpecificHouse(request, select):
     selectU = Housing.objects.filter(id=select)[0]
+    h = Comment.objects.filter(houseID=selectU.id)
+    usernameHome = None
+    if request.user.is_authenticated:
+        usernameHome = request.user.username
+    return render(request, 'singleHome.html', {'comments': h,'result':selectU, 'username': usernameHome})
 
 
 
