@@ -206,7 +206,7 @@ def addComment(request):
     new_comment = Comment(time=curr_time, houseID=houseID, comment=comment)
     new_comment.save()
     h = Comment.objects.filter(houseID=houseID)
-    return render(request, 'occasion.html',{'comments': h,'id': id,'username': usernameHome})
+    return render(request, 'occasion.html', {'comments': h, 'id': id,'username': usernameHome})
 
 
 
@@ -377,7 +377,22 @@ def showSpecificHouse(request, select):
     usernameHome = None
     if request.user.is_authenticated:
         usernameHome = request.user.username
-    return render(request, 'singleHome.html', {'comments': h,'result':selectU, 'username': usernameHome})
+    return render(request, 'singleHome.html', {'comments': h, 'result':selectU, 'username': usernameHome})
+
+def addCommentSingle(request,select):
+    selectU = Housing.objects.filter(id=select)[0]
+
+    data = request.POST.copy()
+    comment = data.get('feedback')
+    houseID = selectU.id
+    curr_time = datetime.datetime.now()
+    usernameHome = None
+    if request.user.is_authenticated:
+        usernameHome = request.user.username
+    new_comment = Comment(time=curr_time, houseID=houseID, comment=comment)
+    new_comment.save()
+    h = Comment.objects.filter(houseID=houseID)
+    return render(request, 'singleHome.html', {'comments': h, 'result': selectU, 'username': usernameHome})
 
 
 

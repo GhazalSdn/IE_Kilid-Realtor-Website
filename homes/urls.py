@@ -29,6 +29,7 @@ urlpatterns = [
     path('getAllHome', views.getAll),
     path('allUsers', views.showAllUsers),
     path('addComment', views.addComment),
+    path(r'^addCommentSingle/(?P<select>[0-9]+)/$', views.addCommentSingle, name= "addCommentSingle"),
     path('occasion.html',views.occasionPage),
     path(r'^deleteUser/(?P<select>[0-9]+)/$', views.deleteUser, name="deleteUser"),
     path(r'^deleteHousing/(?P<select>[0-9]+)/$', views.deleteHousing, name="deleteHousing"),

@@ -20,7 +20,7 @@
     <div id="sideBar">
         <div id="homeDetails">
             <div id="codeDiv">
-{#                <div id="code">کد ملک : 6160c</div>#}
+                <div id="code">{{ result.id }}</div>
                 <div id="time">2{{ result.created_at }}</div>
             </div>
             <h1 id="header">{{ result.title }}</h1>
@@ -50,7 +50,7 @@
 
     <div id="photoHolder">
         <div id="breadCrumb">><div class="crumbs">شهر تهران &gt; </div><div class="crumbs">{{ result.locality }} </div></div>
-{#        <a id="form-submit-button" href="home" style="text-align: center;justify-content: center;text-decoration: none">بازگشت</a>#}
+{#        <a id="form-submit-button" href={% url 'index' %} style="text-align: center;justify-content: center;text-decoration: none>بازگشت</a>#}
         <div id="singlePicture">
 {#            <div class="fa fa-angle-left" id="leftArrow"></div>#}
 {#            <div class="fa fa-angle-right" id="rightArrow"></div>#}
@@ -67,7 +67,7 @@
         <div id="commentHead" >نظرات</div>
 
            {% if  username  %}
-            <form method="POST" action="addComment">
+            <form  action= {% url 'addCommentSingle' select=result.id %} method="POST" >
                                 {% csrf_token %}
                             <div id="commentForm">
 
