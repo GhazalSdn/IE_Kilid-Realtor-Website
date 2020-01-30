@@ -41,7 +41,7 @@
                                 </form>
                                                                 {% for message in messages %}
 
-                            <div class="alert alert-success" style="color: #b30753;font-size: 14px;">
+                            <div class="alert alert-success" style="color: #b30753;font-size: 14px;font-weight: bold;background-color: rgba(170,170,170,.7);;margin-top: 10px;;border-radius: 8px;;padding-right: 20px;">
                         <a class="close" href="#" data-dismiss="alert"></a>
 
                         {{ message }}
@@ -151,6 +151,8 @@
                                 <div class="sec4LogoDiv">
                                     <a class="fa fa-trash singleAction"  href="{% url 'deleteHousing' select=result.id %}"  aria-hidden="true" style="font-size: 26px; "></a>
                                     <a class="fa fa-bookmark singleAction"  href="{% url 'bookmarkHousing' select=result.id %}"  aria-hidden="true" style="font-size: 26px; margin-right: 10px;margin-left: 10px;text-decoration: none "></a>
+                                    <a class="fa fa-edit singleAction"  href="{% url 'editHousing' select=result.id %}"  aria-hidden="true" style="font-size: 22px; margin-right: 8px;margin-left: 8px;text-decoration: none "></a>
+
 
                                     <span class="sec4LogoText">{{ result.estate }}</span></div>
                             </div>
@@ -189,6 +191,70 @@
 
 
                 </div>
+
+
+            {#            editing#}
+
+
+            <div id="sec4Head" style="margin-top: 100px">ویرایش خانه </div>
+                <div id="infoPage"  style="margin-top: 45px;margin-bottom: 45px">
+
+            {% if edition %}
+
+                <div class="selectionBar" id="editionDiv">
+                                <form method="POST" action={% url 'makeedition' %}>
+                                {% csrf_token %}
+                                    {{ form }}
+                                <h1 id="headerForForm">ویرایش خانه</h1>
+                                <div id="completionForm">
+                                    <div class="input">
+                                            <input class="text" placeholder="عنوان" type="text" name="hometitle" value=""  />
+                                    </div>
+                                    <div class="input">
+                                            <input class="text" placeholder="قیمت" type="text" name="homeprice" value=""  />
+                                    </div>
+                                    <div class="input">
+                                            <input class="text" placeholder="نوع" type="text" name="hometype" value=""  />
+                                    </div>
+                                    <div class="input">
+                                            <input class="text" placeholder="متراژ" type="text" name="homearea" value=""  />
+                                    </div>
+                                    <div class="input">
+                                            <input class="text" placeholder="تعداد خواب" type="text" name="homebedrooms" value=""  />
+                                    </div>
+                                    <div class="input">
+                                            <input class="text" placeholder="تعداد پارکینگ" type="text" name="homeparkings" value=""  />
+                                    </div>
+                                    <div class="input">
+                                            <input class="text" placeholder="محله" type="text" name="homelocality" value=""  />
+                                    </div>
+                                    <div class="input" style="display: none">
+                                            <input class="text" style="display: none"  type="text" name="select" value={{ houseID }}  />
+                                    </div>
+
+
+
+                                    <button class="form-submit-button" type="submit" style="margin-bottom: 20px" >ویرایش</button>
+                                </div>
+
+                                </form>
+
+                            </div>
+
+
+            {% endif %}
+
+
+                </div>
+
+
+
+{#            end editing#}
+
+
+
+
+
             </div>
 
 

@@ -35,6 +35,8 @@ urlpatterns = [
     path(r'^bookmarkHousing/(?P<select>[0-9]+)/$', views.bookmarkHousing, name="bookmarkHousing"),
     path(r'^editHousing/(?P<select>[0-9]+)/$', views.editHousing, name="editHousing"),
     path(r'^addManager/(?P<select>[0-9]+)/$', views.addManager, name="addManager"),
+    path('makeedition', views.makeedition, name="makeedition"),
+
     # path('addManager', views.addManager),
 
 ]

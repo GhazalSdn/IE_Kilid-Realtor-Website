@@ -319,14 +319,48 @@ def bookmarkHousing(request, select):
 
 def editHousing(request,select):
     selectU = Housing.objects.filter(id=select)[0]
+    gotodiv = 'editionDiv'
+    usernameHome = None
+    if request.user.is_authenticated:
+        usernameHome = request.user.username
     kilidU = kilidUser.objects.filter(user=request.user)[0]
-    gotodiv = 'sec4HeadHome'
 
     if (kilidU.isManager == False):
 
-        return render(request, 'normalUser.html', {'houseID': selectU, 'username': usernameHome, 'jump': gotodiv})
+        return render(request, 'normalUser.html', {'houseID': selectU.id, 'username': usernameHome, 'jump': gotodiv, 'edition':True})
     else:
-        return render(request, 'manager.html', {'houseID': selectU, 'username': usernameHome, 'jump': gotodiv})
+        return render(request, 'manager.html', {'houseID': selectU.id, 'username': usernameHome, 'jump': gotodiv, 'edition':True})
+
+
+
+def makeedition(request):
+    select = request.POST['select']
+    selectU = Housing.objects.filter(id=select)[0]
+    if request.POST['hometitle']:
+        selectU.title = request.POST['hometitle']
+    if request.POST['homeprice']:
+        selectU.price = request.POST['homeprice']
+    if request.POST['hometype']:
+        selectU.type = request.POST['hometype']
+    if request.POST['homearea']:
+        selectU.area = request.POST['homearea']
+    if request.POST['homebedrooms']:
+        selectU.bedrooms = request.POST['homebedrooms']
+    if request.POST['homeparkings']:
+        selectU.parkings = request.POST['homeparkings']
+    if request.POST['homelocality']:
+        selectU.locality = request.POST['homelocality']
+    selectU.save()
+    messages.error(request, '- خانه ویرایش شد')
+
+    kilidU = kilidUser.objects.filter(user=request.user)[0]
+    if (kilidU.isManager == False):
+        return redirect('user')
+    else:
+        return redirect('manager')
+
+
+
 
 
 

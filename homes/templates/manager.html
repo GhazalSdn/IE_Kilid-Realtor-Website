@@ -14,7 +14,7 @@
         <body>
         <script> window.location.hash = '#{{jump}}'; </script>
             <div id="background">
-                <div id="infoPage" style="height: 820px;margin-top: 45px;margin-bottom: 45px">
+                <div class="infoPage" style="height: 820px;margin-top: 45px;margin-bottom: 45px">
                     <div id="cancelButton" >
                         <a href="home" style="font-size: 12px; color: white; text-decoration: none;width: 100%;margin-left: auto;margin-right: 4px; margin-top: 7px;display: block;">خانه</a>
                     </div>
@@ -42,7 +42,8 @@
                                 </form>
                                                                 {% for message in messages %}
 
-                            <div class="alert alert-success" style="color: #b30753;font-size: 14px;">
+                                                        <div class="alert alert-success" style="color: #b30753;font-size: 14px;font-weight: bold;background-color: rgba(170,170,170,.7);;margin-top: 10px;;border-radius: 8px;;padding-right: 20px;">
+
                         <a class="close" href="#" data-dismiss="alert"></a>
 
                         {{ message }}
@@ -110,7 +111,7 @@
                 </div>
 
             <div id="sec4HeadHome" style="margin-top: 100px">همه خانه ها </div>
-                <div id="infoPage" style="margin-top: 45px;margin-bottom: 45px">
+                <div class="infoPage" style="margin-top: 45px;margin-bottom: 45px">
 
                                 <div id="sec4Grid" >
 
@@ -207,6 +208,56 @@
 {#            editing#}
 
 
+            <div id="sec4HeadHome" style="margin-top: 100px">ویرایش خانه </div>
+                <div class="infoPage" id="editionDiv" style="margin-top: 45px;margin-bottom: 45px">
+
+            {% if edition %}
+
+                <div class="selectionBar">
+                                <form method="POST" action={% url 'makeedition' %}>
+                                {% csrf_token %}
+                                    {{ form }}
+                                <h1 id="headerForForm">ویرایش خانه</h1>
+                                <div id="completionForm">
+                                    <div class="input">
+                                            <input class="text" placeholder="عنوان" type="text" name="hometitle" value=""  />
+                                    </div>
+                                    <div class="input">
+                                            <input class="text" placeholder="قیمت" type="text" name="homeprice" value=""  />
+                                    </div>
+                                    <div class="input">
+                                            <input class="text" placeholder="نوع" type="text" name="hometype" value=""  />
+                                    </div>
+                                    <div class="input">
+                                            <input class="text" placeholder="متراژ" type="text" name="homearea" value=""  />
+                                    </div>
+                                    <div class="input">
+                                            <input class="text" placeholder="تعداد خواب" type="text" name="homebedrooms" value=""  />
+                                    </div>
+                                    <div class="input">
+                                            <input class="text" placeholder="تعداد پارکینگ" type="text" name="homeparkings" value=""  />
+                                    </div>
+                                    <div class="input">
+                                            <input class="text" placeholder="محله" type="text" name="homelocality" value=""  />
+                                    </div>
+                                    <div class="input" style="display: none">
+                                            <input class="text" style="display: none"  type="text" name="select" value={{ houseID }}  />
+                                    </div>
+
+
+
+                                    <button class="form-submit-button" type="submit" style="margin-bottom: 20px" >ویرایش</button>
+                                </div>
+
+                                </form>
+
+                            </div>
+
+
+            {% endif %}
+
+
+                </div>
 
 
 
@@ -218,7 +269,7 @@
 
 
                     <div id="sec4HeadUser" style="margin-top: 100px">همه کاربران </div>
-                            <div id="infoPage" style="margin-top: 45px;margin-bottom: 45px">
+                            <div class="infoPage" style="margin-top: 45px;margin-bottom: 45px">
 
                                 <div id="sec4Grid" style="    display: flex;flex-direction: column;">
 
