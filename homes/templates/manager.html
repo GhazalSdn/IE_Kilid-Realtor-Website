@@ -112,7 +112,7 @@
             <div id="sec4HeadHome" style="margin-top: 100px">همه خانه ها </div>
                 <div id="infoPage" style="margin-top: 45px;margin-bottom: 45px">
 
-                                <div id="sec4Grid">
+                                <div id="sec4Grid" >
 
                     {% for result in results %}
                      <div class="sec4Cards">
@@ -149,6 +149,7 @@
 
                                 </div>
                                 <div class="sec4LogoDiv">
+                                    <a class="fa fa-trash singleAction"  href="{% url 'deleteHousing' select=result.id %}"  aria-hidden="true" style="font-size: 26px; "></a>
                                     <span class="sec4LogoText">{{ result.estate }}</span></div>
                             </div>
                         </div>

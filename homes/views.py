@@ -33,8 +33,8 @@ def login(request):
 def signup(request):
     return render(request, 'signup.html')
 
-def occasion(request):
-    return render(request, 'occasion.html')
+# def occasion(request):
+#     return render(request, 'occasion.html')
 def user(request):
     usernameHome = None
     if request.user.is_authenticated:
@@ -67,14 +67,13 @@ def addHousing(request):
     parkings = data.get('homeparkings')
     locality = data.get('homelocality')
     pic = data.get('homepic')
-    star = data.get('homestar')
     curr_time = datetime.datetime.now()
     image = modelImage(image=pic)
     image.save()
     estate = None
     if request.user.is_authenticated:
         estate = request.user.username
-    housing = Housing(title=title, price=price, type=type, area=area, bedrooms=bedrooms, parkings=parkings, locality=locality, created_at=curr_time, star= star, estate=estate, pic=image)
+    housing = Housing(title=title, price=price, type=type, area=area, bedrooms=bedrooms, parkings=parkings, locality=locality, created_at=curr_time, estate=estate, pic=image)
     housing.save()
     messages.error(request, '- خانه اضافه شد.')
     kilidU = kilidUser.objects.filter(user=request.user)[0]
@@ -266,6 +265,20 @@ def deleteUser(request,select):
         return redirect('user')
     else:
         return redirect('manager')
+
+
+
+def deleteHousing(request, select):
+    selectU = Housing.objects.filter(id=select)[0]
+    selectU.delete()
+
+    kilidU = kilidUser.objects.filter(user=request.user)[0]
+    messages.error(request, '- خانه حذف شد')
+    if (kilidU.isManager == False):
+        return redirect('user')
+    else:
+        return redirect('manager')
+
 
 
 def addManager(request, select):

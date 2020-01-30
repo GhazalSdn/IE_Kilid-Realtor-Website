@@ -3,6 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
         <head>
+            <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
                  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
                 <title>کیلید / ورود</title>
                 <link rel="stylesheet" href={% static "CSS/normalUserStyle.css" %} />
@@ -83,12 +85,7 @@
                                     <div class="input">
                                             <input class="text" placeholder="محله" type="text" name="homelocality" value="" required />
                                     </div>
-
-                                    <fieldset>
-                                    <legend>اکازیون بودن؟</legend>
-                                    <input type="radio" name="homestar" value="True" /> بله <br />
-                                    <input type="radio" name="homestar" value="False" /> خیر <br />
-                                     </fieldset>                                   <div class="input">
+                                    <div class="input">
                                             <input type="file" placeholder="عکس" name="homepic" accept="image/*">
                                     </div>
 
@@ -146,6 +143,7 @@
 
                                 </div>
                                 <div class="sec4LogoDiv">
+                                     <a class="fa fa-trash singleAction"  href="{% url 'deleteHousing' select=result.id %}"  aria-hidden="true" style="font-size: 26px; "></a>
                                     <span class="sec4LogoText">{{ result.estate }}</span></div>
                             </div>
                         </div>

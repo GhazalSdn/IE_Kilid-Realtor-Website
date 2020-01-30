@@ -51,7 +51,7 @@ class Housing(models.Model):
     pic = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True)
     # pic =  models.CharField(max_length=50)
     estate = models.CharField(max_length=50)
-    star = models.BooleanField()
+    star = models.BooleanField(default=False)
 
 
 
