@@ -241,6 +241,32 @@ body{
 
 
 
+#sec4HeadHome{
+    text-align: center;
+    align-self: center;
+    text-decoration: none;
+    font-size: 15px;
+    color: #b30753;
+    margin-bottom: 20px;
+    font-weight: 800;
+    border-left-color: #b30753;
+    border-left-width: thick;
+
+}
+
+
+#sec4HeadBookmark{
+    text-align: center;
+    align-self: center;
+    text-decoration: none;
+    font-size: 15px;
+    color: #b30753;
+    margin-bottom: 20px;
+    font-weight: 800;
+    border-left-color: #b30753;
+    border-left-width: thick;
+
+}
 
 
 

@@ -122,6 +122,9 @@
 {##}
 {#                    </script>#}
                 </form>
+                <div id="advancedSearch">
+                    <a style="cursor: pointer;font-size: 11px">جستجوی پیشرفته</a>
+                    </div>
 
 
 
@@ -170,6 +173,9 @@
                             <div class="sec4ImgsInfo2">
                                 <div>{{ result.locality }}</div>
                             </div>
+                            {% if result.star %}
+                                <div class="fa fa-star" style="color: white;position: relative;right: 250px;top:-40px;font-size: 16px"></div>
+                            {% endif %}
                         </div>
                         <div class="sec4Info">
                             <div class="sec4details">
@@ -196,7 +202,7 @@
 
                                 </div>
                                 <div class="sec4LogoDiv">
-                                    <a class="fa fa-eye singleAction"  href="{% url 'showSpecificHouse' select=result.id %}"  aria-hidden="true" style="color:black;font-size: 26px; margin-right: 8px;margin-left: 10px;text-decoration: none "></a>
+                                    <a class="fa fa-eye singleAction"  href="{% url 'showSpecificHouse' select=result.id %}"  aria-hidden="true" style="color: #173a63;font-size: 26px; margin-right: 8px;margin-left: 10px;text-decoration: none "></a>
 
                                     <span class="sec4LogoText">{{ result.estate }}</span></div>
                             </div>
@@ -497,9 +503,9 @@
                             {% if result.star %}
                                 <div class="fa fa-star" style="color: white;position: relative;right: 250px;top:-40px;font-size: 16px"></div>
                             {% endif %}
-                            {% if result.bookmark %}
-                                <div class="fa fa-bookmark" style="color: white;position: relative;right: 200px;top:-40px;font-size: 16px"></div>
-                            {% endif %}
+{#                            {% if result.bookmark %}#}
+{#                                <div class="fa fa-bookmark" style="color: white;position: relative;right: 200px;top:-40px;font-size: 16px"></div>#}
+{#                            {% endif %}#}
 
                         </div>
                         <div class="sec5Info">
@@ -527,7 +533,7 @@
                                 </div>
                                 <div class="sec5LogoDiv">
 
-                                    <a class="fa fa-eye singleAction"  href="{% url 'showSpecificHouse' select=result.id %}"  aria-hidden="true" style="color:black;font-size: 26px; margin-right: 8px;margin-left: 10px;text-decoration: none "></a>
+                                    <a class="fa fa-eye singleAction"  href="{% url 'showSpecificHouse' select=result.id %}"  aria-hidden="true" style="color: #173a63;font-size: 26px; margin-right: 8px;margin-left: 10px;text-decoration: none "></a>
 
                                     <span class="sec5LogoText">{{ result.estate }}</span></div>
                             </div>

@@ -21,6 +21,7 @@
                     <div id="sidebar" style="position:relative;">
                         <a  href={% url "allHomes" %} id="headerForForm" style="color:white;padding-top: 10px;padding-right: 20px;position: relative;top: 25px;cursor: pointer;text-decoration: none;">لیست همه خانه‌ها</a>
                         <a  href={% url "allUsers" %} id="headerForForm" style="color:white;padding-top: 10px;padding-right: 20px;position: relative;top: 45px;cursor: pointer;text-decoration: none;">لیست همه کاربران</a>
+                        <a  href={% url "bookmarks" %} id="headerForForm" style="font-size:10px;color:white;padding-top: 10px;padding-right: 20px;position: relative;top: 45px;cursor: pointer;text-decoration: none;">لیست خانه‌های bookamrk شده</a>
 {#                        <img src={% static "images/side1.png" %} style="max-width: 100%; min-width: 100%; height: 25%; position: absolute;bottom: 0;" alt="graphics" />#}
                     </div>
                     <div id="formBar">
@@ -129,9 +130,9 @@
                             {% if result.star %}
                                 <div class="fa fa-star" style="color: white;position: relative;right: 250px;top:-40px;font-size: 16px"></div>
                             {% endif %}
-                            {% if result.bookmark %}
-                                <div class="fa fa-bookmark" style="color: white;position: relative;right: 200px;top:-40px;font-size: 16px"></div>
-                            {% endif %}
+{#                            {% if result.bookmark %}#}
+{#                                <div class="fa fa-bookmark" style="color: white;position: relative;right: 200px;top:-40px;font-size: 16px"></div>#}
+{#                            {% endif %}#}
 
                         </div>
                         <div class="sec4Info">
@@ -158,10 +159,10 @@
 
                                 </div>
                                 <div class="sec4LogoDiv">
-                                    <a class="fa fa-trash singleAction"  href="{% url 'deleteHousing' select=result.id %}"  aria-hidden="true" style="font-size: 22px;text-decoration: none "></a>
-                                    <a class="fa fa-star singleAction"  href="{% url 'starHousing' select=result.id %}"  aria-hidden="true" style="font-size: 22px; margin-right: 8px;margin-left: 8px;text-decoration: none "></a>
-                                    <a class="fa fa-bookmark singleAction"  href="{% url 'bookmarkHousing' select=result.id %}"  aria-hidden="true" style="font-size: 22px; margin-right: 8px;margin-left: 8px;text-decoration: none "></a>
-                                    <a class="fa fa-edit singleAction"  href="{% url 'editHousing' select=result.id %}"  aria-hidden="true" style="font-size: 22px; margin-right: 8px;margin-left: 8px;text-decoration: none "></a>
+                                    <a class="fa fa-trash singleAction"  href="{% url 'deleteHousing' select=result.id %}"  aria-hidden="true" style="color: #173a63;font-size: 22px;text-decoration: none "></a>
+                                    <a class="fa fa-star singleAction"  href="{% url 'starHousing' select=result.id %}"  aria-hidden="true" style="color: #173a63;font-size: 22px; margin-right: 8px;margin-left: 8px;text-decoration: none "></a>
+                                    <a class="fa fa-bookmark singleAction"  href="{% url 'bookmarkHousing' select=result.id %}"  aria-hidden="true" style="color: #173a63;font-size: 22px; margin-right: 8px;margin-left: 8px;text-decoration: none "></a>
+                                    <a class="fa fa-edit singleAction"  href="{% url 'editHousing' select=result.id %}"  aria-hidden="true" style="color: #173a63;font-size: 22px; margin-right: 8px;margin-left: 8px;text-decoration: none "></a>
 
 
                                     <span class="sec4LogoText">{{ result.estate }}</span></div>
@@ -271,6 +272,115 @@
 {#            end editing#}
 
 
+{#            adding bookmarks#}
+
+
+                <div id="sec4Head‌Bookmark" style="margin-top: 100px">خانه های bookmark شده</div>
+                <div class="infoPage" style="margin-top: 45px;margin-bottom: 45px">
+
+                    <div id="sec4Grid" >
+
+                    {% for bookmark in bookmarks %}
+                     <div class="sec4Cards">
+                        <div class="sec4Imgs"
+
+                             style="background-image: url({{ bookmark.house.pic.image}});">
+                            <div class="sec4ImgsInfo">
+                                <div>{{ bookmark.house.title }}</div>
+                            </div>
+                            <div class="sec4ImgsInfo2">
+                                <div>{{ bookmark.house.locality }}</div>
+                            </div>
+                            {% if bookmark.house.star %}
+                                <div class="fa fa-star" style="color: white;position: relative;right: 250px;top:-40px;font-size: 16px"></div>
+                            {% endif %}
+{#                            {% if bookmark.house.bookmark %}#}
+{#                                <div class="fa fa-bookmark" style="color: white;position: relative;right: 200px;top:-40px;font-size: 16px"></div>#}
+{#                            {% endif %}#}
+
+                        </div>
+                        <div class="sec4Info">
+                            <div class="sec4details">
+                                <div class="bluedetails4">
+                                   <div >{{ bookmark.house.created_at }}</div>
+                                </div>
+                                <div class="details4">
+                                    <div>{{ bookmark.house.bedrooms }}خوابه</div>
+                                </div>
+                                <div class="details4">
+                                    <div>{{bookmark.house.area}}متر </div>
+                                </div>
+                                <div class="details4">
+                                    <div>{{ bookmark.house.type }}</div>
+                                </div>
+                            </div>
+                            <div class="sec4Price">
+                                <div class="priceTex4">
+                                    <div class="details42">
+                                        <div class="details42small">قیمت:</div>
+                                        <div>{{ bookmark.house.price }}میلیارد تومان </div>
+                                    </div>
+
+                                </div>
+                                <div class="sec4LogoDiv">
+{#                                    <a class="fa fa-trash singleAction"  href="{% url 'deleteHousing' select=result.id %}"  aria-hidden="true" style="color: #173a63;font-size: 22px;text-decoration: none "></a>#}
+{#                                    <a class="fa fa-star singleAction"  href="{% url 'starHousing' select=result.id %}"  aria-hidden="true" style="color: #173a63;font-size: 22px; margin-right: 8px;margin-left: 8px;text-decoration: none "></a>#}
+{#                                    <a class="fa fa-bookmark singleAction"  href="{% url 'bookmarkHousing' select=result.id %}"  aria-hidden="true" style="color: #173a63;font-size: 22px; margin-right: 8px;margin-left: 8px;text-decoration: none "></a>#}
+{#                                    <a class="fa fa-edit singleAction"  href="{% url 'editHousing' select=result.id %}"  aria-hidden="true" style="color: #173a63;font-size: 22px; margin-right: 8px;margin-left: 8px;text-decoration: none "></a>#}
+
+
+                                    <span class="sec4LogoText">{{ bookmark.house.estate }}</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+{#                        <script>#}
+{##}
+{#                                    function timestamp(t) {#}
+{##}
+{#                                        var now = new Date();#}
+{#                                        var nowTimeStamp = now.getTime();#}
+{#                                        var microSecondsDiff = Math.abs({{ result.created_at }} * 1000 - nowTimeStamp);#}
+{#                                        // Number of milliseconds per day =#}
+{#                                        //   24 hrs/day * 60 minutes/hour * 60 seconds/minute * 1000 msecs/second#}
+{#                                        daysDiff = Math.floor(microSecondsDiff / (1000 * 60 * 60 * 24));#}
+{#                                        if (daysDiff > 30) {#}
+{#                                            monthDiff = Math.floor(daysDiff / 30);#}
+{#                                            daysDiff = daysDiff - (30 * monthDiff);#}
+{#                                            return (monthDiff + '  ماه و' + daysDiff + '  روز پیش');#}
+{#                                        } else {#}
+{#                                            return daysDiff + '  روز پیش';#}
+{#                                        }#}
+{##}
+{#                                    }#}
+{##}
+{#                                    $(".bluedetails4").eq(0).append($('<div></div>').html(timestamp({{ result.created_at }})))#}
+{##}
+{#                        </script>#}
+                    {% endfor %}
+
+
+                </div>
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+{#            finish bookmarks#}
+
+
 
 {#            adding all users#}
 
@@ -296,8 +406,8 @@
 
                                 </div>
                                 <div class="useractions">
-                                    <a class="fa fa-trash singleAction" href="{% url 'deleteUser' select=myuser.user.username %}" aria-hidden="true" style="font-size: 22px; "></a>
-                                    <a class="fa fa-users singleAction" href="{% url 'addManager' select=myuser.user.username %}" aria-hidden="true" style="font-size: 22px; "></a>
+                                    <a class="fa fa-trash singleAction" href="{% url 'deleteUser' select=myuser.user.username %}" aria-hidden="true" style="color: #173a63;font-size: 22px; "></a>
+                                    <a class="fa fa-users singleAction" href="{% url 'addManager' select=myuser.user.username %}" aria-hidden="true" style="color: #173a63;font-size: 22px; "></a>
 
                                 </div>
 

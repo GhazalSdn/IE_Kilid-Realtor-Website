@@ -26,6 +26,7 @@ urlpatterns = [
     path('search', views.searchResults),
     path('myHomes', views.showMyHomes ,name='myHomes'),
     path('allHomes', views.showAllHomes, name='allHomes'),
+    path('bookmarks', views.bookmarks, name='bookmarks'),
     path('getAllHome', views.getAll,name='getAllHome'),
     path('allUsers', views.showAllUsers, name='allUsers'),
     path('addComment', views.addComment),

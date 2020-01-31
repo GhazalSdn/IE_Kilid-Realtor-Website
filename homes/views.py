@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 from django.contrib.auth import login as auth_login, authenticate
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm
-from homes.models import Housing, kilidUser,Comment
+from homes.models import Housing, kilidUser,Comment, Bookmark
 from homes.models import Image as modelImage
 from django.contrib.auth.models import User
 # from homes.forms import RegistrationForm
@@ -238,6 +238,8 @@ def showAllHomes(request):
     gotodiv = 'sec4HeadHome'
     return render(request, 'manager.html', {'results': h, 'username': usernameHome, 'jump': gotodiv})
 
+
+
 def getAll(request):
 
     h = Housing.objects.all()
@@ -269,6 +271,7 @@ def deleteUser(request,select):
         return redirect('user')
     else:
         return redirect('manager')
+
 
 
 
@@ -311,9 +314,11 @@ def starHousing(request,select):
 
 def bookmarkHousing(request, select):
         selectU = Housing.objects.filter(id=select)[0]
-        selectU.bookmark = True
-        selectU.save()
+        # selectU.bookmark = True
+        # selectU.save()
         kilidU = kilidUser.objects.filter(user=request.user)[0]
+        new_bookmark = Bookmark(user=kilidU, house=selectU)
+        new_bookmark.save()
         messages.error(request, '- خانه به bookmark اضافه شد')
         if (kilidU.isManager == False):
             return redirect('user')
@@ -336,6 +341,24 @@ def editHousing(request,select):
     else:
         return render(request, 'manager.html', {'houseID': selectU.id,'title':selectU.title,'price':selectU.price,'type':selectU.type,'area':selectU.area,'bedrooms':selectU.bedrooms,
                       'parkings':selectU.parkings,'locality':selectU.locality,'username': usernameHome, 'jump': gotodiv, 'edition':True})
+
+
+
+
+def bookmarks(request):
+    usernameHome = None
+    if request.user.is_authenticated:
+        usernameHome = request.user.username
+    kilidU = kilidUser.objects.filter(user=request.user)[0]
+    bookmarks = Bookmark.objects.filter(user=kilidU)
+    gotodiv = 'sec4Head‌Bookmark'
+
+    if (kilidU.isManager == False):
+
+        return render(request, 'normalUser.html', {'bookmarks':bookmarks,'username': usernameHome, 'jump': gotodiv})
+    else:
+        return render(request, 'manager.html', {'bookmarks':bookmarks,'username': usernameHome, 'jump': gotodiv})
+
 
 
 

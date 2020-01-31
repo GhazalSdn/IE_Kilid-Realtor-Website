@@ -56,7 +56,13 @@ class Housing(models.Model):
     # pic =  models.CharField(max_length=50)
     estate = models.CharField(max_length=50)
     star = models.BooleanField(default=False)
-    bookmark = models.BooleanField(default=False)
+    # bookmark = models.BooleanField(default=False)
+
+
+class Bookmark(models.Model):
+    user = models.ForeignKey(kilidUser, on_delete=models.CASCADE, null=True)
+    house = models.ForeignKey(Housing, on_delete=models.CASCADE, null=True)
+
 
 
 
