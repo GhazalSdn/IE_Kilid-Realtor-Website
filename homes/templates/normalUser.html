@@ -6,7 +6,7 @@
             <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
                  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-                <title>کیلید / ورود</title>
+                <title>کیلید |کاربر عادی</title>
                 <link rel="stylesheet" href={% static "CSS/normalUserStyle.css" %} />
                 <script src="./JS/vue.js"></script>
         </head>
@@ -16,10 +16,10 @@
             <div id="background">
                 <div id="infoPage" style="height: 820px;margin-top: 45px;margin-bottom: 45px">
                     <div id="cancelButton" >
-                        <a href="home" style="font-size: 12px; color: white; text-decoration: none;width: 100%;margin-left: auto;margin-right: 4px; margin-top: 7px;display: block;">خانه</a>
+                        <a href={% url 'index' %} style="font-size: 12px; color: white; text-decoration: none;width: 100%;margin-left: auto;margin-right: 4px; margin-top: 7px;display: block;">خانه</a>
                     </div>
                     <div id="sidebar" style="position:relative;">
-                        <a  href="myHomes" id="headerForForm" style="color:white;padding-top: 10px;padding-right: 20px;position: relative;top: 25px;cursor: pointer;text-decoration: none;">خانه‌های من</a>
+                        <a  href={% url "myHomes" %} id="headerForForm" style="color:white;padding-top: 10px;padding-right: 20px;position: relative;top: 25px;cursor: pointer;text-decoration: none;">خانه‌های من</a>
 {#                        <img src={% static "images/side1.png" %} style="max-width: 100%; min-width: 100%; height: 25%; position: absolute;bottom: 0;" alt="graphics" />#}
                     </div>
                     <div id="formBar">
@@ -207,26 +207,33 @@
                                     {{ form }}
                                 <h1 id="headerForForm">ویرایش خانه</h1>
                                 <div id="completionForm">
-                                    <div class="input">
-                                            <input class="text" placeholder="عنوان" type="text" name="hometitle" value=""  />
+                                    <div class="input" style="    display: flex; flex-direction: row;">
+                                        <label style="font-size: 14px;color: #2c2c2c;margin-left: 8px;">عنوان: </label>
+                                            <input class="text" placeholder="{{ title }}" type="text" name="hometitle" value=""  />
                                     </div>
-                                    <div class="input">
-                                            <input class="text" placeholder="قیمت" type="text" name="homeprice" value=""  />
+                                    <div class="input" style="    display: flex; flex-direction: row;">
+                                        <label style="font-size: 14px;color: #2c2c2c;margin-left: 8px;">قیمت: </label>
+                                            <input class="text" placeholder="{{ price }}" type="text" name="homeprice" value=""  />
                                     </div>
-                                    <div class="input">
-                                            <input class="text" placeholder="نوع" type="text" name="hometype" value=""  />
+                                    <div class="input" style="    display: flex; flex-direction: row;">
+                                        <label style="font-size: 14px;color: #2c2c2c;margin-left: 8px;">نوع: </label>
+                                            <input class="text" placeholder="{{ type }}" type="text" name="hometype" value=""  />
                                     </div>
-                                    <div class="input">
-                                            <input class="text" placeholder="متراژ" type="text" name="homearea" value=""  />
+                                    <div class="input" style="    display: flex; flex-direction: row;">
+                                        <label style="font-size: 14px;color: #2c2c2c;margin-left: 8px;">متراژ: </label>
+                                            <input class="text" placeholder="{{ area }}" type="text" name="homearea" value=""  />
                                     </div>
-                                    <div class="input">
-                                            <input class="text" placeholder="تعداد خواب" type="text" name="homebedrooms" value=""  />
+                                    <div class="input" style="    display: flex; flex-direction: row;">
+                                        <label style="font-size: 14px;color: #2c2c2c;margin-left: 8px;">تعداد خواب: </label>
+                                            <input class="text" placeholder=" {{ bedrooms }}" type="text" name="homebedrooms" value=""  />
                                     </div>
-                                    <div class="input">
-                                            <input class="text" placeholder="تعداد پارکینگ" type="text" name="homeparkings" value=""  />
+                                    <div class="input" style="    display: flex; flex-direction: row;">
+                                        <label style="font-size: 14px;color: #2c2c2c;margin-left: 8px;">تعداد پارکینگ: </label>
+                                            <input class="text" placeholder="{{ parkings }}" type="text" name="homeparkings" value=""  />
                                     </div>
-                                    <div class="input">
-                                            <input class="text" placeholder="محله" type="text" name="homelocality" value=""  />
+                                    <div class="input" style="    display: flex; flex-direction: row;">
+                                        <label style="font-size: 14px;color: #2c2c2c;margin-left: 8px;">محله: </label>
+                                            <input class="text" placeholder="{{ locality }}" type="text" name="homelocality" value=""  />
                                     </div>
                                     <div class="input" style="display: none">
                                             <input class="text" style="display: none"  type="text" name="select" value={{ houseID }}  />

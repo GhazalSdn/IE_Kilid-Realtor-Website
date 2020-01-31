@@ -489,7 +489,7 @@ margin-bottom: 15px;
 .input{
     margin-bottom: 7px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 .text{
 

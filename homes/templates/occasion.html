@@ -115,7 +115,7 @@
     var queries = queryString.split("&");
     var id;
     {% if id %}
-        id = {{ id }}
+        id = "{{ id }}"
     {% else %}
         id =(queries[0].split("="))[1];
     {% endif %}

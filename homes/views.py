@@ -206,7 +206,7 @@ def addComment(request):
     new_comment = Comment(time=curr_time, houseID=houseID, comment=comment)
     new_comment.save()
     h = Comment.objects.filter(houseID=houseID)
-    return render(request, 'occasion.html', {'comments': h, 'id': id,'username': usernameHome})
+    return render(request, 'occasion.html', {'comments': h, 'id': houseID,'username': usernameHome})
 
 
 
@@ -246,12 +246,6 @@ def getAll(request):
         usernameHome = request.user.username
     gotodiv = 'sec4HeadHome'
     return render(request, 'index.html', {'allresults': h, 'username': usernameHome, 'jump': gotodiv})
-
-
-
-
-
-
 
 
 def showAllUsers(request):
@@ -337,9 +331,11 @@ def editHousing(request,select):
 
     if (kilidU.isManager == False):
 
-        return render(request, 'normalUser.html', {'houseID': selectU.id, 'username': usernameHome, 'jump': gotodiv, 'edition':True})
+        return render(request, 'normalUser.html', {'houseID': selectU.id,'title':selectU.title,'price':selectU.price,'type':selectU.type,'area':selectU.area,'bedrooms':selectU.bedrooms,
+                      'parkings':selectU.parkings,'locality':selectU.locality, 'username': usernameHome, 'jump': gotodiv, 'edition':True})
     else:
-        return render(request, 'manager.html', {'houseID': selectU.id,'username': usernameHome, 'jump': gotodiv, 'edition':True})
+        return render(request, 'manager.html', {'houseID': selectU.id,'title':selectU.title,'price':selectU.price,'type':selectU.type,'area':selectU.area,'bedrooms':selectU.bedrooms,
+                      'parkings':selectU.parkings,'locality':selectU.locality,'username': usernameHome, 'jump': gotodiv, 'edition':True})
 
 
 
