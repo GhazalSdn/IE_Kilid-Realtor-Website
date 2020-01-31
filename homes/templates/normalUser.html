@@ -113,7 +113,7 @@
                     {% for result in results %}
                      <div class="sec4Cards">
                         <div class="sec4Imgs"
-                             style="background-image: url({{ result.pic.image}});">
+                             style="background-image: url({{ result.pic}});">
                             <div class="sec4ImgsInfo">
                                 <div>{{ result.title }}</div>
                             </div>
@@ -215,7 +215,7 @@
                      <div class="sec4Cards">
                         <div class="sec4Imgs"
 
-                             style="background-image: url({{ bookmark.house.pic.image}});">
+                             style="background-image: url({{ bookmark.house.pic}});">
                             <div class="sec4ImgsInfo">
                                 <div>{{ bookmark.house.title }}</div>
                             </div>
@@ -359,6 +359,9 @@
                                     </div>
                                     <div class="input" style="display: none">
                                             <input class="text" style="display: none"  type="text" name="select" value={{ houseID }}  />
+                                    </div>
+                                    <div class="input">
+                                            <input type="file" placeholder="اضافه کردن عکس" name="addpic" accept="image/*" value=""/>
                                     </div>
 
 

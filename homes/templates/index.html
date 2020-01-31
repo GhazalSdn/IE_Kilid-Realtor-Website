@@ -232,7 +232,7 @@
                     {% for result in results %}
                      <div class="sec4Cards">
                         <div class="sec4Imgs"
-                             style="background-image: url({{ result.pic.image}});">
+                             style="background-image: url({{ result.pic}});">
                             <div class="sec4ImgsInfo">
                                 <div>{{ result.title }}</div>
                             </div>
@@ -559,13 +559,15 @@
                      <div class="sec5Cards">
                         <div class="sec5Imgs"
 
-                             style="background-image: url({{ result.pic.image}});">
+                             style="background-image: url({{ result.pic}});">
                             <div class="sec5ImgsInfo">
                                 <div>{{ result.title }}</div>
                             </div>
                             <div class="sec5ImgsInfo2">
                                 <div>{{ result.locality }}</div>
                             </div>
+{#                        <div class="sec5ImgNum"><div>{{ number }}</div></div>#}
+{#                        <div class="fa fa-camera camera"></div>#}
                             {% if result.star %}
                                 <div class="fa fa-star" style="color: white;position: relative;right: 250px;top:-40px;font-size: 16px"></div>
                             {% endif %}

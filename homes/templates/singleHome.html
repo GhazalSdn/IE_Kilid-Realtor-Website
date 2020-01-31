@@ -1,19 +1,20 @@
-
 {% load static %}
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml"><head>
-        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css">
-        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
-            <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-            <title> کیلید|single house</title>
-            <link rel="stylesheet" href="/static/CSS/occasionCSS.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <title> کیلید|single house</title>
+    <link rel="stylesheet" href="/static/CSS/occasionCSS.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-</head><body>
+</head>
+<body>
 
 <div id="home">
 
@@ -25,79 +26,107 @@
             </div>
             <h1 id="header">{{ result.title }}</h1>
             <div id="price">
-                <div id="totalPrice"><div class="greyPrice">قیمت :   </div><div class="blue">{{ result.price }}</div></div>
-{#                <div id="perMeterPrice"><div< div="" class="greyPrice">قیمت هر متر مربع :   </div<><div< div="" class="blue">31میلیون تومان</div<></div>#}
+                <div id="totalPrice">
+                    <div class="greyPrice">قیمت :</div>
+                    <div class="blue">{{ result.price }}</div>
+                </div>
+                {#                <div id="perMeterPrice"><div< div="" class="greyPrice">قیمت هر متر مربع :   </div<><div< div="" class="blue">31میلیون تومان</div<></div>#}
             </div>
             <div id="details">
-                <div class="info"><div class="fa fa-home iconss"></div><div class="infoText">{{ result.type }}</div></div>
-                <div class="info"><div class="fa fa-bed iconss"></div><div class="infoText">{{ result.bedrooms }}  </div></div>
-                <div class="info"><div class="fa fa-square-o iconss"></div><div class="infoText">{{ result.area }} </div></div>
-                <div class="info"><div class="fa fa-car iconss"></div><div class="infoText">{{ result.parkings }} </div></div>
+                <div class="info">
+                    <div class="fa fa-home iconss"></div>
+                    <div class="infoText">{{ result.type }}</div>
+                </div>
+                <div class="info">
+                    <div class="fa fa-bed iconss"></div>
+                    <div class="infoText">{{ result.bedrooms }}  </div>
+                </div>
+                <div class="info">
+                    <div class="fa fa-square-o iconss"></div>
+                    <div class="infoText">{{ result.area }} </div>
+                </div>
+                <div class="info">
+                    <div class="fa fa-car iconss"></div>
+                    <div class="infoText">{{ result.parkings }} </div>
+                </div>
 
-{#            <div< div="" class="info"></div<></div>#}
+                {#            <div< div="" class="info"></div<></div>#}
 
-        </div>
-        <div id="estate">
-            <div id="agency">
-                <img id="logo" src="/static/homeImgs/homeEstate.png">
-
-{#                <img id="logo" src="https://www.kilidstatic.com/logos/548d6d32-3831-416a-a2d9-f0b2bbb63d2a.jpg">#}
-                <div id="agencyName">{{ result.estate }}</div>
             </div>
-            <div id="ownerName"></div>
-            <div id="ownerPhone">{{ phone }}</div>
-{#            <div id="ownerPhone">0912xxxx257</div>#}
+            <div id="estate">
+                <div id="agency">
+                    <img id="logo" src="/static/homeImgs/homeEstate.png">
+
+                    {#                <img id="logo" src="https://www.kilidstatic.com/logos/548d6d32-3831-416a-a2d9-f0b2bbb63d2a.jpg">#}
+                    <div id="agencyName">{{ result.estate }}</div>
+                </div>
+                <div id="ownerName"></div>
+                <div id="ownerPhone">{{ phone }}</div>
+                {#            <div id="ownerPhone">0912xxxx257</div>#}
+            </div>
         </div>
-    </div>
     </div>
 
     <div id="photoHolder">
-        <div id="breadCrumb">><div class="crumbs">شهر تهران &gt; </div><div class="crumbs">{{ result.locality }} </div></div>
-{#        <a id="form-submit-button" href={% url 'index' %} style="text-align: center;justify-content: center;text-decoration: none>بازگشت</a>#}
+        <div id="breadCrumb">>
+            <div class="crumbs">شهر تهران &gt;</div>
+            <div class="crumbs">{{ result.locality }} </div>
+        </div>
+        {#        <a id="form-submit-button" href={% url 'index' %} style="text-align: center;justify-content: center;text-decoration: none>بازگشت</a>#}
         <div id="singlePicture">
-{#            <div class="fa fa-angle-left" id="leftArrow"></div>#}
-{#            <div class="fa fa-angle-right" id="rightArrow"></div>#}
-        <img class="pics" src="{{ result.pic.image }}" style="border-radius: 15px"/></div>
-{#        <div id="pageNum"><div>1/1</div></div>#}
-{#        <div id="pictures"><div class="otherPics" style="background-image: url(&quot;https://www.kilidstatic.com/photos/large/listing_229f67b6-1880-4f71-86a6-d5531f835c5a.jpg&quot;);"></div><div id="dots" class="fa fa-ellipsis-v"></div></div>#}
+            {#            <div class="fa fa-angle-left" id="leftArrow"></div>#}
+            {#            <div class="fa fa-angle-right" id="rightArrow"></div>#}
+            <img class="pics" src="{{ result.pic }}" style="border-radius: 15px"/></div>
+
+        <div id="pictures">
+            {% for image in images %}
+                <div class="otherPics"
+                 style="background-image:url({{ image.image}});"></div>
+
+
+            {% endfor %}
+        <div id="dots" class="fa fa-ellipsis-v">
+
+            </div>
+        </div>
+        {#        <div id="pageNum"><div>1/1</div></div>#}
+        {#        <div id="pictures"><div class="otherPics" style="background-image: url(&quot;https://www.kilidstatic.com/photos/large/listing_229f67b6-1880-4f71-86a6-d5531f835c5a.jpg&quot;);"></div><div id="dots" class="fa fa-ellipsis-v"></div></div>#}
     </div>
 
 
 </div>
 
 
-    <div id="comments" >
-        <div id="commentHead" >نظرات</div>
+<div id="comments">
+    <div id="commentHead">نظرات</div>
 
-           {% if  username  %}
-            <form  action= {% url 'addCommentSingle' select=result.id %} method="POST" >
-                                {% csrf_token %}
-                            <div id="commentForm">
+    {% if  username %}
+        <form action={% url 'addCommentSingle' select=result.id %} method="POST">
+            {% csrf_token %}
+            <div id="commentForm">
 
-                                <div >
+                <div>
 
-                                    <div id="addComment">
-                                        <label id="userComment">کاربر:{{ username }}</label>
-                                            <input id="commenttext" placeholder="نظر شما" type="textarea" name="feedback" value=""  />
-                                    </div>
+                    <div id="addComment">
+                        <label id="userComment">کاربر:{{ username }}</label>
+                        <input id="commenttext" placeholder="نظر شما" type="textarea" name="feedback" value=""/>
+                    </div>
 
 
-                                    <button id="form-submit-button" type="submit" >ثبت نظر</button>
-                                </div>
+                    <button id="form-submit-button" type="submit">ثبت نظر</button>
+                </div>
 
-                            </div>
-                        </form>
-            {% endif %}
-        <div id="commentBox">
+            </div>
+        </form>
+    {% endif %}
+    <div id="commentBox">
         {% for comment in comments %}
             <div class="allcomments"> ({{ comment.time }}) : {{ comment.comment }}</div>
         {% endfor %}
-        </div>
-
-
-
-
     </div>
+
+
+</div>
 
 
 {#    <div id="comments">#}
@@ -114,6 +143,5 @@
 {#    </div>#}
 
 
-
-
-</body></html>
+</body>
+</html>

@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 from django.contrib.auth import login as auth_login, authenticate
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm
-from homes.models import Housing, kilidUser,Comment, Bookmark
+from homes.models import Housing, kilidUser,Comment, Bookmark,Image
 from homes.models import Image as modelImage
 from django.contrib.auth.models import User
 # from homes.forms import RegistrationForm
@@ -66,14 +66,15 @@ def addHousing(request):
     bedrooms = data.get('homebedrooms')
     parkings = data.get('homeparkings')
     locality = data.get('homelocality')
-    pic = data.get('homepic')
+    pic = '/static/homeImgs/'+data.get('homepic')
     curr_time = datetime.datetime.now()
-    image = modelImage(image='/static/homeImgs/'+pic)
-    image.save()
+    # image = modelImage(image='/static/homeImgs/'+pic)
+    # image.save()
+
     estate = None
     if request.user.is_authenticated:
         estate = request.user.username
-    housing = Housing(title=title, price=price, type=type, area=area, bedrooms=bedrooms, parkings=parkings, locality=locality, created_at=curr_time, estate=estate, pic=image)
+    housing = Housing(title=title, price=price, type=type, area=area, bedrooms=bedrooms, parkings=parkings, locality=locality, created_at=curr_time, estate=estate, pic=pic)
     housing.save()
     messages.error(request, '- خانه اضافه شد.')
     kilidU = kilidUser.objects.filter(user=request.user)[0]
@@ -424,6 +425,13 @@ def makeedition(request):
         selectU.parkings = request.POST['homeparkings']
     if request.POST['homelocality']:
         selectU.locality = request.POST['homelocality']
+    print('test1')
+    if request.POST.get('addpic'):
+        print('test22')
+        addPic =request.POST.get('addpic')
+        newPic = Image(house=selectU, image='/static/homeImgs/'+addPic)
+        print('test')
+        newPic.save()
     selectU.save()
     messages.error(request, '- خانه ویرایش شد')
 
@@ -437,17 +445,28 @@ def makeedition(request):
 
 def showSpecificHouse(request, select):
     selectU = Housing.objects.filter(id=select)[0]
+    images = Image.objects.filter(house = selectU)
     h = Comment.objects.filter(houseID=selectU.id)
-    kilidU = kilidUser.objects.filter(user=request.user)[0]
+    # kilidU = kilidUser.objects.filter(user=request.user)[0]
     estate = selectU.estate
-    selectedUser = User.objects.filter(username=estate)[0]
-    selectedKilid=kilidUser.objects.filter(user=selectedUser)[0]
-    phone = selectedKilid.phoneNum
-    print ('####', phone)
+    selectedUser = User.objects.filter(username=estate)
+    if(not len(selectedUser) == 0):
+        selectedUser = User.objects.filter(username=estate)[0]
+        selectedKilid=kilidUser.objects.filter(user=selectedUser)[0]
+        phone = selectedKilid.phoneNum
+        # print ('####', phone)
+    else:
+        selectedUser = User.objects.filter(username='ghazal.s')[0]
+        selectedKilid = kilidUser.objects.filter(user=selectedUser)[0]
+        phone = selectedKilid.phoneNum
+    for i in images:
+        print(i.image)
+
+
     usernameHome = None
     if request.user.is_authenticated:
         usernameHome = request.user.username
-    return render(request, 'singleHome.html', {'comments': h, 'result':selectU,'phone':phone, 'username': usernameHome})
+    return render(request, 'singleHome.html', {'comments': h, 'result':selectU,'images':images,'phone':phone, 'username': usernameHome})
 
 def addCommentSingle(request,select):
     selectU = Housing.objects.filter(id=select)[0]

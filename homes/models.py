@@ -34,13 +34,7 @@ def create_user(sender, instance, created, **kwargs):
 #     instance.kilidUser.save()
 
 
-class Image(models.Model):
-    image = models.CharField(max_length=500)
 
-    # @property
-    # def get_photo_url(self):
-    #     return '/static/images/%s.jpg' % self.image
-    # # related_house = models.OneToOneField(Housing, on_delete=models.CASCADE, null=True)
 
 
 class Housing(models.Model):
@@ -52,11 +46,21 @@ class Housing(models.Model):
     parkings = models.IntegerField()
     locality = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
-    pic = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True)
-    # pic =  models.CharField(max_length=50)
+    # pic = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True)
+    pic = models.CharField(max_length=200 ,null=True)
     estate = models.CharField(max_length=50)
     star = models.BooleanField(default=False)
     # bookmark = models.BooleanField(default=False)
+
+
+
+class Image(models.Model):
+    image = models.CharField(max_length=500)
+    house = models.ForeignKey(Housing, on_delete=models.CASCADE, null=True)
+    # @property
+    # def get_photo_url(self):
+    #     return '/static/images/%s.jpg' % self.image
+    # # related_house = models.OneToOneField(Housing, on_delete=models.CASCADE, null=True)
 
 
 class Bookmark(models.Model):
