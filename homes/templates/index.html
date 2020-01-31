@@ -170,6 +170,13 @@
 
                 <script>
                     $("#doSearch").click(function (event) {
+                        var title = $("#doSearch").html() ;
+                        if(title == "جستجوی پیشرفته"){
+                            $("#doSearch").html("بستن");
+                        }
+                        else{
+                            $("#doSearch").html("جستجوی پیشرفته");
+                        }
                         var content = document.getElementById("advanced");
                         if(content.style.display == "none"){
                             content.style.display = "flex";
@@ -262,7 +269,7 @@
                                 </div>
                                 <div class="sec4LogoDiv">
                                     <a class="fa fa-eye singleAction"  href="{% url 'showSpecificHouse' select=result.id %}"  aria-hidden="true" style="color: #173a63;font-size: 26px; margin-right: 8px;margin-left: 10px;text-decoration: none "></a>
-
+                                    <img class="sec4Logo" src="/static/homeImgs/homeEstate.png">
                                     <span class="sec4LogoText">{{ result.estate }}</span></div>
                             </div>
                         </div>
@@ -590,11 +597,12 @@
                                     </div>
 
                                 </div>
-                                <div class="sec5LogoDiv">
+                                <div class="sec5LogoDiv" style="position: relative;right: 45px">
                                     <a class="fa fa-bookmark singleAction"  href="{% url 'bookmarkHousing' select=result.id %}"  aria-hidden="true" style="color: #173a63;font-size: 22px; margin-right: 8px;margin-left: 8px;text-decoration: none "></a>
 
 
                                     <a class="fa fa-eye singleAction"  href="{% url 'showSpecificHouse' select=result.id %}"  aria-hidden="true" style="color: #173a63;font-size: 26px; margin-right: 8px;margin-left: 10px;text-decoration: none "></a>
+                                    <img class="sec4Logo" src="/static/homeImgs/homeEstate.png">
 
                                     <span class="sec5LogoText">{{ result.estate }}</span></div>
                             </div>

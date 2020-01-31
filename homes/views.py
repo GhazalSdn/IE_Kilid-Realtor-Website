@@ -88,14 +88,18 @@ def registration_view (request):
     username = data.get('username')
     name = data.get('name')
     surname = data.get('surname')
-    email= data.get('email')
+    tele= data.get('tele')
     password = data.get('password')
     if User.objects.filter(username=username).exists():
         messages.error(request, '- نام کاربری وارد شده تکراری است')
         return redirect('signup')
 
-    new_user = User.objects.create_user(username=username, email=email, password=password, first_name=name, last_name=surname)
+    new_user = User.objects.create_user(username=username, password=password, first_name=name, last_name=surname)
     new_user.save()
+    foundU = User.objects.filter(username=username)[0]
+    kilidU = kilidUser.objects.filter(user=foundU)[0]
+    kilidU.phoneNum = tele
+    kilidU.save()
     # new_kilidUser = kilidUser(user= new_user, isManager=False)
     # new_kilidUser.save()
     createduser = authenticate(request, username=username, password=password)
@@ -434,10 +438,16 @@ def makeedition(request):
 def showSpecificHouse(request, select):
     selectU = Housing.objects.filter(id=select)[0]
     h = Comment.objects.filter(houseID=selectU.id)
+    kilidU = kilidUser.objects.filter(user=request.user)[0]
+    estate = selectU.estate
+    selectedUser = User.objects.filter(username=estate)[0]
+    selectedKilid=kilidUser.objects.filter(user=selectedUser)[0]
+    phone = selectedKilid.phoneNum
+    print ('####', phone)
     usernameHome = None
     if request.user.is_authenticated:
         usernameHome = request.user.username
-    return render(request, 'singleHome.html', {'comments': h, 'result':selectU, 'username': usernameHome})
+    return render(request, 'singleHome.html', {'comments': h, 'result':selectU,'phone':phone, 'username': usernameHome})
 
 def addCommentSingle(request,select):
     selectU = Housing.objects.filter(id=select)[0]

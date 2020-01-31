@@ -21,7 +21,7 @@
                     <div id="sidebar" style="position:relative;">
                         <a  href={% url "allHomes" %} id="headerForForm" style="color:white;padding-top: 10px;padding-right: 20px;position: relative;top: 25px;cursor: pointer;text-decoration: none;">لیست همه خانه‌ها</a>
                         <a  href={% url "allUsers" %} id="headerForForm" style="color:white;padding-top: 10px;padding-right: 20px;position: relative;top: 45px;cursor: pointer;text-decoration: none;">لیست همه کاربران</a>
-                        <a  href={% url "bookmarks" %} id="headerForForm" style="font-size:10px;color:white;padding-top: 10px;padding-right: 20px;position: relative;top: 45px;cursor: pointer;text-decoration: none;">لیست خانه‌های bookamrk شده</a>
+                        <a  href={% url "bookmarks" %} id="headerForForm" style="font-size:16px;color:white;padding-top: 10px;padding-right: 20px;position: relative;top: 65px;cursor: pointer;text-decoration: none;">لیست bookmark</a>
 {#                        <img src={% static "images/side1.png" %} style="max-width: 100%; min-width: 100%; height: 25%; position: absolute;bottom: 0;" alt="graphics" />#}
                     </div>
                     <div id="formBar">
@@ -165,6 +165,8 @@
                                     <a class="fa fa-bookmark singleAction"  href="{% url 'bookmarkHousing' select=result.id %}"  aria-hidden="true" style="color: #173a63;font-size: 22px; margin-right: 8px;margin-left: 8px;text-decoration: none "></a>
                                     <a class="fa fa-edit singleAction"  href="{% url 'editHousing' select=result.id %}"  aria-hidden="true" style="color: #173a63;font-size: 22px; margin-right: 8px;margin-left: 8px;text-decoration: none "></a>
                                     <a class="fa fa-eye singleAction"  href="{% url 'showSpecificHouse' select=result.id %}"  aria-hidden="true" style="color: #173a63;font-size: 22px; margin-right: 8px;margin-left: 10px;text-decoration: none "></a>
+                                        <img class="sec4Logo" src="/static/homeImgs/homeEstate.png">
+
                                     </div>
 
 
@@ -331,6 +333,7 @@
 {#                                    <a class="fa fa-bookmark singleAction"  href="{% url 'bookmarkHousing' select=result.id %}"  aria-hidden="true" style="color: #173a63;font-size: 22px; margin-right: 8px;margin-left: 8px;text-decoration: none "></a>#}
 {#                                    <a class="fa fa-edit singleAction"  href="{% url 'editHousing' select=result.id %}"  aria-hidden="true" style="color: #173a63;font-size: 22px; margin-right: 8px;margin-left: 8px;text-decoration: none "></a>#}
 
+                                    <img class="sec4Logo" src="/static/homeImgs/homeEstate.png">
 
                                     <span class="sec4LogoText">{{ bookmark.house.estate }}</span></div>
                             </div>
