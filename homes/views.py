@@ -275,6 +275,14 @@ def showAllHomes(request):
 
 def getAll(request):
 
+    h = Housing.objects.all()[:4]
+    usernameHome = None
+    if request.user.is_authenticated:
+        usernameHome = request.user.username
+    gotodiv = 'sec4HeadHome'
+    return render(request, 'index.html', {'allresults': h, 'username': usernameHome, 'jump': gotodiv})
+def continuegetAll(request):
+
     h = Housing.objects.all()
     usernameHome = None
     if request.user.is_authenticated:

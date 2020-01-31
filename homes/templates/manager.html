@@ -158,11 +158,14 @@
                                     </div>
 
                                 </div>
-                                <div class="sec4LogoDiv">
+                                <div class="sec4LogoDiv" style="flex-direction: column">
+                                    <div style="display: flex;flex-direction: row">
                                     <a class="fa fa-trash singleAction"  href="{% url 'deleteHousing' select=result.id %}"  aria-hidden="true" style="color: #173a63;font-size: 22px;text-decoration: none "></a>
                                     <a class="fa fa-star singleAction"  href="{% url 'starHousing' select=result.id %}"  aria-hidden="true" style="color: #173a63;font-size: 22px; margin-right: 8px;margin-left: 8px;text-decoration: none "></a>
                                     <a class="fa fa-bookmark singleAction"  href="{% url 'bookmarkHousing' select=result.id %}"  aria-hidden="true" style="color: #173a63;font-size: 22px; margin-right: 8px;margin-left: 8px;text-decoration: none "></a>
                                     <a class="fa fa-edit singleAction"  href="{% url 'editHousing' select=result.id %}"  aria-hidden="true" style="color: #173a63;font-size: 22px; margin-right: 8px;margin-left: 8px;text-decoration: none "></a>
+                                    <a class="fa fa-eye singleAction"  href="{% url 'showSpecificHouse' select=result.id %}"  aria-hidden="true" style="color: #173a63;font-size: 22px; margin-right: 8px;margin-left: 10px;text-decoration: none "></a>
+                                    </div>
 
 
                                     <span class="sec4LogoText">{{ result.estate }}</span></div>

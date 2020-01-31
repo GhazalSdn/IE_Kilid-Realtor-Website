@@ -29,6 +29,7 @@ urlpatterns = [
     path('allHomes', views.showAllHomes, name='allHomes'),
     path('bookmarks', views.bookmarks, name='bookmarks'),
     path('getAllHome', views.getAll,name='getAllHome'),
+    path('continueGetAll', views.continuegetAll, name='continueGetAll'),
     path('allUsers', views.showAllUsers, name='allUsers'),
     path('addComment', views.addComment),
     path(r'^addCommentSingle/(?P<select>[0-9]+)/$', views.addCommentSingle, name= "addCommentSingle"),
