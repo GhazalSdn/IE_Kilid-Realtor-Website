@@ -30,8 +30,8 @@ def loginSignup(request):
     return render(request, 'loginSignup.html')
 def login(request):
     return render(request, 'login.html')
-def signup(request):
-    return render(request, 'signup.html')
+# def signup(request):
+#     return render(request, 'signup.html')
 
 # def occasion(request):
 #     return render(request, 'occasion.html')
@@ -180,6 +180,39 @@ def searchResults(request):
 
         gotodiv = "sectionSearch"
         return render(request, 'index.html', {'results': h,'username':usernameHome, 'jump':gotodiv})
+
+
+
+def advancedSearchResults(request):
+
+    minP = 0
+    maxP = 900000
+    minA =0
+    maxA = 900000
+    # return render(request, 'index.html', {'JSON': json})
+    if request.method == 'GET':
+        locality = request.GET.get('section')
+        if request.GET['minP']:
+            minP = request.GET.get('minP')
+        if request.GET['maxP']:
+            maxP = request.GET.get('maxP')
+        if request.GET['minA']:
+            minA = request.GET.get('minA')
+        if request.GET['maxA']:
+            maxA = request.GET.get('maxA')
+        # print(locality)
+        h = Housing.objects.filter(locality=locality, price__gte=minP, price__lte=maxP, area__gte=minA, area__lte=maxA)
+        # house_serializer = serializers.serialize("json", h)
+        # json = JsonResponse(house_serializer, safe=False)
+        # return (json)
+        usernameHome = None
+        if request.user.is_authenticated:
+            usernameHome = request.user.username
+
+        gotodiv = "sectionSearch"
+        return render(request, 'index.html', {'results': h,'username':usernameHome, 'jump':gotodiv})
+
+
 
 def showMyHomes(request):
     estate = None

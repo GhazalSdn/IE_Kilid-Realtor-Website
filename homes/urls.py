@@ -24,6 +24,7 @@ urlpatterns = [
     path('changeEmail', views.changeEmail,name='changeEmail'),
     # path('userHomepage', views.userHomepage),
     path('search', views.searchResults),
+    path('advancedSearch', views.advancedSearchResults),
     path('myHomes', views.showMyHomes ,name='myHomes'),
     path('allHomes', views.showAllHomes, name='allHomes'),
     path('bookmarks', views.bookmarks, name='bookmarks'),

@@ -123,8 +123,67 @@
 {#                    </script>#}
                 </form>
                 <div id="advancedSearch">
-                    <a style="cursor: pointer;font-size: 11px">جستجوی پیشرفته</a>
+                    <div id="advanced" style="display:none;flex-direction: row">
+
+
+
+                        <form method="GET"  action="advancedSearch">
+                    {% csrf_token %}
+                    <div  style="position: relative;">
+                        <input  type="text" style="border-radius: 5px;font-size: 13px;margin-bottom: 5px"
+                               placeholder="نام محله"
+                               name="section" value=""/>
+
+                        <input  type="text" style="border-radius: 5px;font-size: 13px;margin-bottom: 5px"
+                               placeholder="حداقل قیمت"
+                               name="minP" value=""/>
+                        <input  type="text" style="border-radius: 5px;font-size: 13px;margin-bottom: 5px"
+                               placeholder="حداکثر قیمت"
+                               name="maxP" value=""/>
+                        <input  type="text" style="border-radius: 5px;font-size: 13px;margin-bottom: 5px"
+                               placeholder="حداقل متراژ"
+                               name="minA" value=""/>
+                        <input  type="text" style="border-radius: 5px;font-size: 13px;margin-bottom: 5px"
+                               placeholder="حداکثر متراژ"
+                               name="maxA" value=""/>
                     </div>
+                    <button type="submit" id="searchButton" style="margin-bottom: 20px">
+                        <i class="fa fa-search"></i>
+                    </button>
+{#                    <script>#}
+{#                        function showRes(event){#}
+{#                            document.getElementById(sectionSearch).style.display = "block";#}
+{#                        }#}
+{##}
+{#                    </script>#}
+                </form>
+
+
+
+
+
+                    </div>
+                    <a  id="doSearch" style="cursor: pointer;font-size: 13px">جستجوی پیشرفته</a>
+
+                    </div>
+
+
+                <script>
+                    $("#doSearch").click(function (event) {
+                        var content = document.getElementById("advanced");
+                        if(content.style.display == "none"){
+                            content.style.display = "flex";
+                        }
+                        else{
+                            content.style.display = "none";
+                        }
+
+                    });
+
+
+
+
+                </script>
 
 
 
